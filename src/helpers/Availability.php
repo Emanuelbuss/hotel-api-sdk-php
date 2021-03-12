@@ -49,7 +49,8 @@ class Availability extends ApiHelper
                 "dailyRate" => "boolean",
                 "language" => "string",
                 "accommodations"=> "array",
-                "filter" => "hotelbeds\\hotel_api_sdk\\model\\Filter"
+                "filter" => "hotelbeds\\hotel_api_sdk\\model\\Filter",
+                "rooms" => "array"
                 ];
     }
 }
