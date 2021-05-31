@@ -12,6 +12,7 @@ use hotelbeds\hotel_api_sdk\model\Filter;
 use hotelbeds\hotel_api_sdk\model\Geolocation;
 use hotelbeds\hotel_api_sdk\model\Stay;
 use hotelbeds\hotel_api_sdk\model\Boards;
+use hotelbeds\hotel_api_sdk\model\ReviewRQ;
 
 /**
  * Class Availability
@@ -52,7 +53,7 @@ class Availability extends ApiHelper
                 "accommodations"=> "array",
                 "filter" => "hotelbeds\\hotel_api_sdk\\model\\Filter",
                 "rooms" => "array",
-                "reviews" => "hotelbeds\\hotel_api_sdk\\model\\reviewRQ"
+                "reviews" => "hotelbeds\\hotel_api_sdk\\model\\ReviewRQ"
                 ];
     }
 }
