@@ -1,0 +1,21 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Tomeu
+ * Date: 11/29/2015
+ * Time: 4:53 PM
+ */
+
+namespace hotelbeds\hotel_api_sdk\model;
+
+/**
+ * Class reviewRQ
+ * @package hotelbeds\hotel_api_sdk\model
+ * @property int minRate minimum review wanted.
+ * @property int maxRate maximum review wanted.
+ * @property string type type of review i.e. TRIPADVISOR.
+ */
+class reviewRQ extends ApiModel
+{
+   
+}
