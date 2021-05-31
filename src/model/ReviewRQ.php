@@ -17,10 +17,13 @@ namespace hotelbeds\hotel_api_sdk\model;
  */
 class ReviewRQ extends ApiModel
 {
+    public function __construct(array $data=null)
+    {
+
         $this->validFields = [
             "minRate" => "int",
             "maxRate" => "int",
             "type" => "string"
         ];
-
+          }
 }
