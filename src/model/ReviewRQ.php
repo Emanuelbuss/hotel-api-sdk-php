@@ -21,8 +21,8 @@ class ReviewRQ extends ApiModel
     {
 
         $this->validFields = [
-            "minRate" => "int",
-            "maxRate" => "int",
+            "minRate" => "integer",
+            "maxRate" => "integer",
             "type" => "string"
         ];
           }
