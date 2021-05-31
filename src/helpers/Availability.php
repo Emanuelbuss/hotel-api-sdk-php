@@ -50,7 +50,8 @@ class Availability extends ApiHelper
                 "language" => "string",
                 "accommodations"=> "array",
                 "filter" => "hotelbeds\\hotel_api_sdk\\model\\Filter",
-                "rooms" => "array"
+                "rooms" => "array",
+                "reviews" => "array"
                 ];
     }
 }
