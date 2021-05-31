@@ -29,7 +29,7 @@ use hotelbeds\hotel_api_sdk\model\ReviewRQ;
  * @property Filter $filter Filters for availability
  * @property Boards $boards Boards for availability
  * @property array $accommodations Array of accommodation strings to filter by APARTMENT,APTHOTEL,CAMPING,HOMES,HOSTEL,HOTEL,PENDING,RESORT,RURAL
- * @property ReviewRQ $reviews Reviews we want to filter on
+ * @property array $reviews Reviews we want to filter on
  */
 
 class Availability extends ApiHelper
@@ -53,7 +53,7 @@ class Availability extends ApiHelper
                 "accommodations"=> "array",
                 "filter" => "hotelbeds\\hotel_api_sdk\\model\\Filter",
                 "rooms" => "array",
-                "reviews" => "hotelbeds\\hotel_api_sdk\\model\\ReviewRQ"
+                "reviews" => "array"
                 ];
     }
 }
