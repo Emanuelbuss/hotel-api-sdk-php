@@ -43,6 +43,8 @@ use hotelbeds\hotel_api_sdk\types\ApiVersions;
 use hotelbeds\hotel_api_sdk\types\HotelSDKException;
 use hotelbeds\hotel_api_sdk\messages\ApiRequest;
 
+use Rolfsbuss\db\RAPI;
+
 use Zend\Http\Client;
 use Zend\Http\Request;
 use Zend\Http\Response;
@@ -164,6 +166,9 @@ class HotelApiClient
      */
     private function callApi(ApiRequest $request)
     {
+	    
+	     RAPI::waitForHotelbedsRateLimit();
+	    
         try {
             $signature = hash("sha256", $this->apiKey.$this->sharedSecret.time());
             $this->lastRequest = $request->prepare($this->apiKey, $signature);
