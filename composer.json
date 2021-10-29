@@ -13,9 +13,8 @@
         "php": ">=5.5",
         "zendframework/zend-http": "^2.5",
         "zendframework/zend-json": "^2.5",
-        "phpunit/php-code-coverage": "3.0.1",
-        "phpunit/phpunit": "3.7.*",
-        "phpdocumentor/phpdocumentor": "2.*"
+        "phpdocumentor/phpdocumentor": "2.*",
+        "phpunit/phpunit": "^4"
     },
     "license": "LGPL-2.1",
     "authors": [
