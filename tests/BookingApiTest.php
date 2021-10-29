@@ -33,7 +33,7 @@ class BookingApiTest extends PHPUnit\Framework\TestCase
 
     protected function setUp()
     {
-        $reader = new Zend\Config\Reader\Ini();
+        $reader = new Laminas\Config\Reader\Ini();
         $commonConfig   = $reader->fromFile(__DIR__ . '/config/Common.ini');
         $currentEnvironment = $commonConfig["environment"]? $commonConfig["environment"]: "DEFAULT";
         $environmentConfig   = $reader->fromFile(__DIR__ . '/config/Environment.' . strtoupper($currentEnvironment) . '.ini');

@@ -84,7 +84,7 @@ use hotelbeds\hotel_api_sdk\types\ApiVersion;
 use hotelbeds\hotel_api_sdk\types\ApiVersions;
 use hotelbeds\hotel_api_sdk\messages\AvailabilityRS;
 
-$reader = new Zend\Config\Reader\Ini();
+$reader = new Laminas\Config\Reader\Ini();
 $commonConfig   = $reader->fromFile(__DIR__ . '\config\Common.ini');
 $currentEnvironment = $commonConfig["environment"]? $commonConfig["environment"]: "DEFAULT";
 $environmentConfig   = $reader->fromFile(__DIR__ . '\config\Environment.' . strtoupper($currentEnvironment) . '.ini');
