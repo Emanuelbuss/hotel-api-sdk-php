@@ -18,6 +18,10 @@
         {
             "name": "Tomeu Capo",
             "email": "t.capo@hotelbeds.com"
+        },
+        {
+            "name": "Thorbjörn 'Puggan' Sundragon",
+            "email": "thorbjorn.sundragon@rolfsbuss.se"
         }
     ],
     "minimum-stability": "stable",
