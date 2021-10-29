@@ -166,9 +166,11 @@ class HotelApiClient
      */
     private function callApi(ApiRequest $request)
     {
-	    
-	     RAPI::waitForHotelbedsRateLimit();
-	    
+
+        if (class_exists('RAPI')) {
+            RAPI::waitForHotelbedsRateLimit();
+        }
+
         try {
             $signature = hash("sha256", $this->apiKey.$this->sharedSecret.time());
             $this->lastRequest = $request->prepare($this->apiKey, $signature);
