@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Tomeu
@@ -30,8 +31,13 @@ class Pax extends ApiModel
      * @param string|null $surname Surname
      * @param string|null $roomId Room ID
      */
-    public function __construct(string $type = self::AD, int $age = 30, ?string $name = null, ?string $surname = null, ?string $roomId = null)
-    {
+    public function __construct(
+        string $type = self::AD,
+        int $age = 30,
+        ?string $name = null,
+        ?string $surname = null,
+        ?string $roomId = null
+    ) {
         $this->validFields = [
             'roomId' => 'integer',
             'type' => 'string',

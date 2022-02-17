@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Tomeu
@@ -18,8 +19,8 @@ namespace hotelbeds\hotel_api_sdk\model;
  */
 class Geolocation extends ApiModel
 {
-    const KM = 'km';
-    const MI = 'mi';
+    public const KM = 'km';
+    public const MI = 'mi';
 
     public function __construct()
     {

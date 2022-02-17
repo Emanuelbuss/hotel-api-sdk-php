@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Tomeu
@@ -21,7 +22,8 @@ use hotelbeds\hotel_api_sdk\model\PaymentData;
  * @property string $language Response language
  * @property string $remark Client remark
  * @property integer $platform Platform
- * @property double $tolerance Margin of price difference (as percentage) accepted when a price difference occurs between Availability/CheckRate and Booking operations.
+ * @property double $tolerance Margin of price difference (as percentage)
+ *     accepted when a price difference occurs between Availability/CheckRate and Booking operations.
  */
 class Booking extends ApiHelper
 {

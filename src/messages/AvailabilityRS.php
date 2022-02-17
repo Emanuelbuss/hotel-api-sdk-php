@@ -1,4 +1,5 @@
 <?php
+
 /**
  * #%L
  * hotel-api-sdk

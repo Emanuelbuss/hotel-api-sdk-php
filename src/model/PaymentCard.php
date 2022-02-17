@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author Hotelbeds Group
  */
@@ -16,8 +17,13 @@ namespace hotelbeds\hotel_api_sdk\model;
  */
 class PaymentCard extends ApiModel
 {
-    public function __construct(?string $cardType = null, ?string $cardNumber = null, ?string $cardHolderName = null, ?string $expiryDate = null, ?string $cardCVC = null)
-    {
+    public function __construct(
+        ?string $cardType = null,
+        ?string $cardNumber = null,
+        ?string $cardHolderName = null,
+        ?string $expiryDate = null,
+        ?string $cardCVC = null
+    ) {
         $this->validFields = [
             'cardType' => 'string',
             'cardNumber' => 'string',

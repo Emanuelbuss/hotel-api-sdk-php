@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: xortiz
@@ -48,4 +49,3 @@ class DailyRatesIterator implements \Iterator
         $this->position = 0;
     }
 }
-

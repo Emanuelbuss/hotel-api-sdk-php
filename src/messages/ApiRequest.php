@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Tomeu
@@ -60,7 +61,9 @@ abstract class ApiRequest implements ApiCallTypes
     public function prepare(string $apiKey, string $signature): Request
     {
         if (empty($apiKey) || empty($signature)) {
-            throw new \InvalidArgumentException('HotelApiClient cannot be created without specifying an API key and signature');
+            throw new \InvalidArgumentException(
+                'HotelApiClient cannot be created without specifying an API key and signature'
+            );
         }
 
         $this->request->setUri($this->baseUri);

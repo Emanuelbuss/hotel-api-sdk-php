@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Tomeu
@@ -48,4 +49,3 @@ class CancellationPoliciesIterator implements \Iterator
         $this->position = 0;
     }
 }
-

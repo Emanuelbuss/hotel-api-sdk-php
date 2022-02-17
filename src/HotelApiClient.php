@@ -51,12 +51,15 @@ use Laminas\Http\Response;
 use Laminas\Uri\UriFactory;
 
 /**
- * Class HotelApiClient. This is the main class of the SDK that makes client-api hotel. Mainly this class is used to make all calls to the hotel-api webservice using ApiHelper classes
+ * Class HotelApiClient.
+ * This is the main class of the SDK that makes client-api hotel.
+ * Mainly this class is used to make all calls to the hotel-api webservice using ApiHelper classes
  * @package hotelbeds\hotel_api_sdk
  * @method StatusRS Status() Get status of hotel-api service
  * @method AvailabilityRS Availability(Availability $availData) Do availability accommodation request
  * @method CheckRateRS CheckRate(CheckRate $rateData) Check different room rates for booking
- * @method BookingConfirmRS BookingConfirm(Booking $bookingData) Method allows confirmation of the rate keys selected.  There is an option of confirming more than one rate key for the same hotel/room/board.
+ * @method BookingConfirmRS BookingConfirm(Booking $bookingData) Method allows confirmation of the rate keys selected.
+ *     There is an option of confirming more than one rate key for the same hotel/room/board.
  * @method BookingCancellationRS BookingCancellation($bookingId) Method can cancel confirmed booking
  * @method BookingListRS BookingList(BookingList $bookData) To get a list of bookings
  */
@@ -107,8 +110,15 @@ class HotelApiClient
      * @param string|null $adapter Customize adapter for http request
      * @param string|null $secureUrl Customize Base URL of hotel-api secure service.
      */
-    public function __construct(string $url, string $apiKey, string $sharedSecret, ApiVersion $version, int $timeout = 30, string $adapter = null, string $secureUrl = null)
-    {
+    public function __construct(
+        string $url,
+        string $apiKey,
+        string $sharedSecret,
+        ApiVersion $version,
+        int $timeout = 30,
+        string $adapter = null,
+        string $secureUrl = null
+    ) {
         $this->lastRequest = null;
         $this->apiKey = trim($apiKey);
         $this->sharedSecret = trim($sharedSecret);
@@ -134,7 +144,8 @@ class HotelApiClient
     /**
      * @param string $sdkMethod Method request name.
      * @param array $args only specify a ApiHelper class type for encapsulate request arguments
-     * @return ApiResponse Class of response. Each call type returns response class: For example AvailabilityRQ returns AvailabilityRS
+     * @return ApiResponse Class of response.
+     *     Each call type returns response class: For example AvailabilityRQ returns AvailabilityRS
      * @throws HotelSDKException Specific exception of call
      */
     public function __call(string $sdkMethod, array $args = null): ApiResponse
@@ -210,5 +221,4 @@ class HotelApiClient
     {
         return $this->lastResponse;
     }
-
 }

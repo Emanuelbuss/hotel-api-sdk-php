@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Tomeu
@@ -26,7 +27,7 @@ class ApiUri extends Http
      */
     public function prepare(ApiVersion $version): void
     {
-        $strSubs = new StringTemplate\Engine;
+        $strSubs = new StringTemplate\Engine();
         $this->setPath(
             $strSubs->render(
                 self::API_URI_FORMAT,

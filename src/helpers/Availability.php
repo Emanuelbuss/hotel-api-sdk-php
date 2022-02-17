@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: vmavromatis
@@ -18,7 +19,8 @@ use hotelbeds\hotel_api_sdk\model\Boards;
  * Class Availability
  * @package hotelbeds\hotel_api_sdk\helpers
  * @property Stay $stay Booking length of stay element
- * @property array $occupancies In the occupancy node the following must be informed: the number of rooms, capacity, number of adults, number of children and children ages if applicable.
+ * @property array $occupancies In the occupancy node the following must be informed:
+ *     the number of rooms, capacity, number of adults, number of children and children ages if applicable.
  * @property Destination $destination Destination element: Destination code, zone
  * @property Geolocation $geolocation Geolocation element: longitude, latitude
  * @property array $keywords Array of keywords to be searched.
@@ -28,7 +30,8 @@ use hotelbeds\hotel_api_sdk\model\Boards;
  * @property string $language Language of the response
  * @property Filter $filter Filters for availability
  * @property Boards $boards Boards for availability
- * @property array $accommodations Array of accommodation strings to filter by APARTMENT,APTHOTEL,CAMPING,HOMES,HOSTEL,HOTEL,PENDING,RESORT,RURAL
+ * @property array $accommodations Array of accommodation strings to filter by
+ *     APARTMENT, APTHOTEL, CAMPING, HOMES, HOSTEL, HOTEL, PENDING, RESORT, RURAL
  * @property array $reviews Reviews we want to filter on
  */
 class Availability extends ApiHelper
