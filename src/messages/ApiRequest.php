@@ -11,6 +11,7 @@ namespace hotelbeds\hotel_api_sdk\messages;
 
 use hotelbeds\hotel_api_sdk\helpers\ApiHelper;
 use hotelbeds\hotel_api_sdk\types\ApiUri;
+use Laminas\Http\Headers;
 use Laminas\Http\Request;
 use Laminas\Uri\Http;
 use Laminas\Stdlib\Parameters;
@@ -67,7 +68,11 @@ abstract class ApiRequest implements ApiCallTypes
         }
 
         $this->request->setUri($this->baseUri);
-        $this->request->getHeaders()->addHeaders(
+        $headers = $this->request->getHeaders();
+        if (!$headers instanceof Headers) {
+            throw new \RuntimeException('wrong type returned');
+        }
+        $headers->addHeaders(
             [
                 'Api-Key' => $apiKey,
                 'X-Signature' => $signature,
@@ -84,7 +89,7 @@ abstract class ApiRequest implements ApiCallTypes
                     $this->request->setQuery(new Parameters($this->dataRQ->toArray()));
                     break;
                 case Request::METHOD_POST:
-                    $this->request->getHeaders()->addHeaders(['Content-Type' => 'application/json']);
+                    $headers->addHeaders(['Content-Type' => 'application/json']);
                     $this->request->setContent('' . $this->dataRQ);
             }
         }
