@@ -22,15 +22,12 @@ class BookingConfirmRQ extends ApiRequest
      * BookingConfirmRQ constructor.
      * @param ApiUri $baseUri Base uri when the request does not include payment data
      * @param ApiUri $basePaymentUri Base uri when the request does include payment data
-     * @param Booking $bookingDataRQ
+     * @param ?Booking $bookingDataRQ
      */
-    public function __construct(ApiUri $baseUri, ApiUri $basePaymentUri, Booking $bookingDataRQ)
+    public function __construct(ApiUri $baseUri, ApiUri $basePaymentUri, ?Booking $bookingDataRQ)
     {
-    	if($bookingDataRQ!=null && $bookingDataRQ->paymentData!=null){
-    		parent::__construct($basePaymentUri, self::BOOKING);
-    	} else {
-        	parent::__construct($baseUri, self::BOOKING);
-    	}
+        $uri = $bookingDataRQ === null || $bookingDataRQ->paymentData === null ? $baseUri : $basePaymentUri;
+        parent::__construct($uri, self::BOOKING);
         $this->request->setMethod(Request::METHOD_POST);
         $this->setDataRequest($bookingDataRQ);
     }

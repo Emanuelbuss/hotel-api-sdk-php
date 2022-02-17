@@ -8,25 +8,24 @@
 
 namespace hotelbeds\hotel_api_sdk\messages;
 
-use hotelbeds\hotel_api_sdk\model\AuditData;
 use hotelbeds\hotel_api_sdk\model\Hotel;
+use hotelbeds\hotel_api_sdk\traits\AuditDataTrait;
 
+/**
+ * @property Hotel $hotel
+ */
 class CheckRateRS extends ApiResponse
 {
+    use AuditDataTrait;
+
+    /**
+     * @throws FieldNotExists
+     */
     public function __construct(array $rsData)
     {
         parent::__construct($rsData);
         if (array_key_exists("hotel", $rsData)) {
-            $hotelObject = new Hotel($this->hotel);
-            $this->hotel = $hotelObject;
+            $this->hotel = new Hotel($this->__get('hotel'));
         }
-    }
-
-    /**
-     * @return AuditData Return class of audit
-     */
-    public function auditData()
-    {
-        return new AuditData($this->auditData);
     }
 }

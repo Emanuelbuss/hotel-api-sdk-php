@@ -12,18 +12,20 @@ namespace hotelbeds\hotel_api_sdk\messages;
  * Class FieldNotExists
  * @package hotelbeds\hotel_api_sdk\messages
  */
-class FieldNotExists extends \Exception{}
+class FieldNotExists extends \Exception
+{
+}
 
 /**
  * Class ApiResponse
  * @package hotelbeds\hotel_api_sdk\messages
  */
-abstract class ApiResponse
+abstract class ApiResponse implements \JsonSerializable
 {
     /**
      * @var array Contains data response
      */
-    private $responseData;
+    private array $responseData;
 
     /**
      * ApiResponse constructor.
@@ -36,24 +38,30 @@ abstract class ApiResponse
 
     /**
      * Getter magical method can get field value.
-     * @param $field string Field name
+     * @param string $field Field name
      * @return mixed Field value
      * @throws FieldNotExists If field not exists
      */
-    public function __get($field)
+    public function __get(string $field)
     {
-        if (!array_key_exists($field, $this->responseData))
+        if (!array_key_exists($field, $this->responseData)) {
             throw new FieldNotExists("$field not exists in this data response");
+        }
 
         return $this->responseData[$field];
     }
 
+    public function __isset(string $field)
+    {
+        return isset($this->responseData[$field]);
+    }
+
     /**
      * Setter magical method
-     * @param $field string Field Name
-     * @param $value mixed Field value
+     * @param string $field Field Name
+     * @param mixed $value Field value
      */
-    public function __set($field, $value)
+    public function __set(string $field, $value)
     {
         $this->responseData[$field] = $value;
     }
@@ -62,7 +70,12 @@ abstract class ApiResponse
      * Return array data response.
      * @return array response data in array format
      */
-    public function toArray()
+    public function toArray(): array
+    {
+        return $this->responseData;
+    }
+
+    public function jsonSerialize(): array
     {
         return $this->responseData;
     }

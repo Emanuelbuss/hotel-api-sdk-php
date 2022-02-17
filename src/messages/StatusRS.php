@@ -10,8 +10,8 @@ namespace hotelbeds\hotel_api_sdk\messages;
 
 /**
  * Class StatusRS
- *
- * @property-read string status Return status of Hotel-API status
+ * @property-read string $status Return status of Hotel-API status
  */
-
-class StatusRS extends ApiResponse {}
+class StatusRS extends ApiResponse
+{
+}

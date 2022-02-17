@@ -14,8 +14,8 @@ namespace hotelbeds\hotel_api_sdk\messages;
  */
 interface ApiCallTypes
 {
-    const AVAILABILITY = "hotels";
-    const BOOKING = "bookings";
-    const CHECK_AVAIL = "checkrates";
-    const STATUS = "status";
+    public const AVAILABILITY = 'hotels';
+    public const BOOKING = 'bookings';
+    public const CHECK_AVAIL = 'checkrates';
+    public const STATUS = 'status';
 }

@@ -8,7 +8,7 @@
 
 namespace hotelbeds\hotel_api_sdk\messages;
 
-use hotelbeds\hotel_api_sdk\model\AuditData;
+use hotelbeds\hotel_api_sdk\traits\AuditDataTrait;
 
 /**
  * Class BookingCancellationRS
@@ -16,21 +16,5 @@ use hotelbeds\hotel_api_sdk\model\AuditData;
  */
 class BookingCancellationRS extends ApiResponse
 {
-    /**
-     * BookingCancellationRS constructor.
-     * @param array $rsData Array of data response for populating response object.
-     */
-    public function __construct(array $rsData)
-    {
-        parent::__construct($rsData);
-    }
-
-    /**
-     * Get audit data object from response
-     * @return AuditData Return class of audit
-     */
-    public function auditData()
-    {
-        return new AuditData($this->auditData);
-    }
+    use AuditDataTrait;
 }

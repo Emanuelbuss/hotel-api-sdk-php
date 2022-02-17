@@ -8,34 +8,27 @@
 
 namespace hotelbeds\hotel_api_sdk\messages;
 
-use hotelbeds\hotel_api_sdk\model\AuditData;
 use hotelbeds\hotel_api_sdk\model\Booking;
+use hotelbeds\hotel_api_sdk\traits\AuditDataTrait;
 
 /**
  * Class BookingConfirmRS
+ * @property ?Booking $booking
  * @package hotelbeds\hotel_api_sdk\messages
  */
 class BookingConfirmRS extends ApiResponse
 {
+    use AuditDataTrait;
+
     /**
      * BookingConfirmRS constructor.
-     * @param array $rsData
+     * @throws FieldNotExists
      */
     public function __construct(array $rsData)
     {
         parent::__construct($rsData);
         if (array_key_exists("booking", $rsData)) {
-            $bookingObject = new Booking($this->booking);
-            $this->booking = $bookingObject;
+            $this->booking = new Booking($this->__get('booking'));
         }
-    }
-
-    /**
-     * Returns an auditdata object with response auditdata
-     * @return AuditData Return class of audit
-     */
-    public function auditData()
-    {
-        return new AuditData($this->auditData);
     }
 }

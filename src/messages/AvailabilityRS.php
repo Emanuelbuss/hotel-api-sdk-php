@@ -23,40 +23,34 @@
 
 namespace hotelbeds\hotel_api_sdk\messages;
 
-use hotelbeds\hotel_api_sdk\model\AuditData;
 use hotelbeds\hotel_api_sdk\model\Hotels;
+use hotelbeds\hotel_api_sdk\traits\AuditDataTrait;
 
 /**
  * Class AvailabilityRS
  * @package hotelbeds\hotel_api_sdk\messages
- * @property AuditData auditData Relevant internal information
- * @property Hotels hotels List of available hotels
+ * @property Hotels $hotels List of available hotels
  */
-
 class AvailabilityRS extends ApiResponse
 {
+    use AuditDataTrait;
+
+    /**
+     * @throws FieldNotExists
+     */
     public function __construct(array $rsData)
     {
         parent::__construct($rsData);
         if (array_key_exists("hotels", $rsData)) {
-            $hotelsObject = new Hotels($this->hotels);
-            $this->hotels = $hotelsObject;
+            $this->hotels = new Hotels($this->__get('hotels'));
         }
     }
 
     /**
      * @return bool Returns True when response hotels list is empty. False otherwise.
      */
-    public function isEmpty()
+    public function isEmpty(): bool
     {
-        return ($this->hotels->total === 0);
-    }
-
-    /**
-     * @return AuditData Return class of audit
-     */
-    public function auditData()
-    {
-        return new AuditData($this->auditData);
+        return $this->hotels->total === 0;
     }
 }
