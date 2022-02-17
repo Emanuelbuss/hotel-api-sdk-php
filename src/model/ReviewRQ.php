@@ -25,5 +25,9 @@ class ReviewRQ extends ApiModel
             'maxRate' => 'integer',
             'type' => 'string',
         ];
+
+        if ($data !== null) {
+            $this->fields = $data;
+        }
     }
 }
