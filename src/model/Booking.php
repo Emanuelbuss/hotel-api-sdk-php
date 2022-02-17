@@ -19,30 +19,29 @@ class Booking extends ApiModel
      * Booking constructor.
      * @param array|null $data
      */
-    public function __construct(array $data=null)
+    public function __construct(array $data = null)
     {
         $this->validFields = [
-            "reference" => "string",
-            "cancellationReference" => "string",
-            "clientReference" => "string",
-            "modificationPolicies" => "array",
-            "creationDate" => "string",
-            "creationUser" => "string",
-            "totalNet" => "double",
-            "totalSellingRate" => "double",
-            "pendingAmount" => "double",
-            "currency" => "string",
-            "status" => "array",
-            "holder" => "array",
-            "commisionVAT" => "double",
-            "agCommision" => "double",
-            "remark" => "string",
-            "hotel" => "array",
-            "invoiceCompany" => "array"
+            'reference' => 'string',
+            'cancellationReference' => 'string',
+            'clientReference' => 'string',
+            'modificationPolicies' => 'array',
+            'creationDate' => 'string',
+            'creationUser' => 'string',
+            'totalNet' => 'double',
+            'totalSellingRate' => 'double',
+            'pendingAmount' => 'double',
+            'currency' => 'string',
+            'status' => 'array',
+            'holder' => 'array',
+            'commisionVAT' => 'double',
+            'agCommision' => 'double',
+            'remark' => 'string',
+            'hotel' => 'array',
+            'invoiceCompany' => 'array',
         ];
 
-        if ($data !== null)
-        {
+        if ($data !== null) {
             $this->fields = $data;
         }
     }

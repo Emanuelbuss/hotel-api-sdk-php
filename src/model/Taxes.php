@@ -8,31 +8,40 @@
 
 namespace hotelbeds\hotel_api_sdk\model;
 
+use Exception;
+use JetBrains\PhpStorm\Internal\TentativeType;
+use Traversable;
+
 /**
  * Class Taxes
  * @package hotelbeds\hotel_api_sdk\model
- * @property boolean allIncluded Informs about if all taxes are included or not
- * @property array taxes List of all taxes
+ * @property boolean $allIncluded Informs about if all taxes are included or not
+ * @property ?array $taxes List of all taxes
  */
-class Taxes extends ApiModel
+class Taxes extends ApiModel implements \IteratorAggregate
 {
-    public function __construct(array $data=null)
+    public function __construct(array $data = null)
     {
         $this->validFields = [
-            "allIncluded" => "boolean",
-            "taxes" => "array"
+            'allIncluded' => 'boolean',
+            'taxes' => 'array',
         ];
 
-        if ($data !== null)
-        {
+        if ($data !== null) {
             $this->fields = $data;
         }
     }
 
-    public function iterator()
+    /**
+     * @deprecated use {@see getIterator}
+     */
+    public function iterator(): TaxesIterator
     {
-        if ($this->taxes !== null)
-            return new TaxesIterator($this->taxes);
-        return new TaxesIterator([]);
+        return new TaxesIterator($this->taxes ?? []);
+    }
+
+    public function getIterator(): TaxesIterator
+    {
+        return new TaxesIterator($this->taxes ?? []);
     }
 }

@@ -11,24 +11,22 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class DailyRate
  * @package hotelbeds\hotel_api_sdk\model
- * @property integer offset Offset price
- * @property double dailyNet Net price
- * @property double dailySellingRate price
+ * @property integer $offset Offset price
+ * @property double $dailyNet Net price
+ * @property double $dailySellingRate price
  */
-
 class DailyRate extends ApiModel
 {
-    public function __construct(array $data=null)
+    public function __construct(array $data = null)
     {
         $this->validFields = [
-            "offset" => "integer",
-            "dailyNet" => "double",
-            "dailySellingRate" => "double"
+            'offset' => 'integer',
+            'dailyNet' => 'double',
+            'dailySellingRate' => 'double',
         ];
 
-        if ($data !== null)
-        {
-           $this->fields = $data;
+        if ($data !== null) {
+            $this->fields = $data;
         }
     }
 }

@@ -11,20 +11,20 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class BookingRoom
  * @package hotelbeds\hotel_api_sdk\model
- * @property string rateKey Rate key to be confirmed taken from the previous step.
- * @property array paxes List of paxes of the room.
+ * @property string $rateKey Rate key to be confirmed taken from the previous step.
+ * @property array $paxes List of paxes of the room.
  */
 class BookingRoom extends ApiModel
 {
-    public function __construct($rateKey=null)
+    public function __construct($rateKey = null)
     {
         $this->validFields = [
-            "rateKey" => "string",
-            "paxes" => "array"
+            'rateKey' => 'string',
+            'paxes' => 'array',
         ];
 
         if ($rateKey !== null) {
-            $this->fields["rateKey"] = $rateKey;
+            $this->fields['rateKey'] = $rateKey;
         }
     }
 }

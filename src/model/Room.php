@@ -8,39 +8,45 @@
 
 namespace hotelbeds\hotel_api_sdk\model;
 
+use Exception;
+use JetBrains\PhpStorm\Internal\TentativeType;
+use Traversable;
+
 /**
  * Class Room
  * @package hotelbeds\hotel_api_sdk\model
- * @property integer code Code of room
- * @property string name Name of room
- * @property array rates list of all rates of this room
- * @property array paxes
- * @property integer id
- * @property string supplierReference
-
+ * @property integer $code Code of room
+ * @property string $name Name of room
+ * @property ?array $rates list of all rates of this room
+ * @property array $paxes
+ * @property integer $id
+ * @property string $supplierReference
  */
-class Room extends ApiModel
+class Room extends ApiModel implements \IteratorAggregate
 {
-    public function __construct(array $data=null)
+    public function __construct(array $data = null)
     {
-        $this->validFields =
-            ["code" => "integer",
-            "paxes" => "array",
-            "id" => "integer",
-            "supplierReference" => "string",
-            "name" => "string",
-            "rates" => "array"];
+        $this->validFields = [
+            'code' => 'integer',
+            'paxes' => 'array',
+            'id' => 'integer',
+            'supplierReference' => 'string',
+            'name' => 'string',
+            'rates' => 'array',
+        ];
 
-        if ($data !== null)
-        {
+        if ($data !== null) {
             $this->fields = $data;
         }
     }
 
-    public function rateIterator()
+    public function rateIterator(): RateIterator
     {
-        if ($this->rates !== null)
-            return new RateIterator($this->rates);
-        return new RateIterator([]);
+        return new RateIterator($this->rates ?? []);
+    }
+
+    public function getIterator(): RateIterator
+    {
+        return new RateIterator($this->rates ?? []);
     }
 }

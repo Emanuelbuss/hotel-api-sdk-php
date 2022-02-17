@@ -11,26 +11,25 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class Geolocation
  * @package hotelbeds\hotel_api_sdk\model
- * @property double longitude
- * @property double latitude
- * @property double radius
- * @property string unit
+ * @property double $longitude
+ * @property double $latitude
+ * @property double $radius
+ * @property string $unit
  */
-
 class Geolocation extends ApiModel
 {
-    CONST KM='km';
-    CONST MI='mi';
+    const KM = 'km';
+    const MI = 'mi';
 
     public function __construct()
     {
         $this->validFields = [
-            "longitude" => "double",
-            "latitude" => "double",
-            "radius" => "double",
-            "secondaryLatitude" => "double",
-            "secondaryLongitude" => "double",
-            "unit" => "string"
+            'longitude' => 'double',
+            'latitude' => 'double',
+            'radius' => 'double',
+            'secondaryLatitude' => 'double',
+            'secondaryLongitude' => 'double',
+            'unit' => 'string',
         ];
     }
 }

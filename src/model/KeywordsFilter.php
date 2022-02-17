@@ -11,8 +11,8 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class KeywordsFilter
  * @package hotelbeds\hotel_api_sdk\model
- * @property string keyword Array of keyword search string
- * @property boolean allIncluded
+ * @property string $keyword Array of keyword search string
+ * @property boolean $allIncluded
  */
 class KeywordsFilter extends ApiModel
 {
@@ -21,8 +21,9 @@ class KeywordsFilter extends ApiModel
      */
     public function __construct()
     {
-        $this->validFields =
-            ["keyword" => "string",
-             "allIncluded" => "boolean"];
+        $this->validFields = [
+            'keyword' => 'string',
+            'allIncluded' => 'boolean',
+        ];
     }
 }

@@ -19,7 +19,6 @@ namespace hotelbeds\hotel_api_sdk\model;
  * @property string $release Release of service
  * @property string $token The unique token for this request
  * @property string $internalData Data for internal use
-
  */
 class AuditData extends ApiModel
 {
@@ -27,21 +26,20 @@ class AuditData extends ApiModel
      * AuditData constructor.
      * @param array|null $data Data response
      */
-    public function __construct(array $data=null)
+    public function __construct(array $data = null)
     {
         $this->validFields = [
-            "processTime" => "double",
-            "timestamp" => "string",
-            "serverId" => "string",
-            "requestHost" => "string",
-            "environment" => "string",
-            "release" => "integer",
-            "token" => "string",
-            "internalData" => "string"
+            'processTime' => 'double',
+            'timestamp' => 'string',
+            'serverId' => 'string',
+            'requestHost' => 'string',
+            'environment' => 'string',
+            'release' => 'integer',
+            'token' => 'string',
+            'internalData' => 'string',
         ];
 
-        if ($data !== null)
-        {
+        if ($data !== null) {
             $this->fields = $data;
         }
     }

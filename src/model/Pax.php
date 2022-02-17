@@ -11,16 +11,16 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class Pax. Declare passenger data.
  * @package hotelbeds\hotel_api_sdk\model
- * @property integer roomId
- * @property string type Pax type. Two values are permitted for the attribute: AD for adult y CH
- * @property integer age
- * @property string name
- * @property string surname
+ * @property integer $roomId
+ * @property string $type Pax type. Two values are permitted for the attribute: AD for adult y CH
+ * @property integer $age
+ * @property string $name
+ * @property string $surname
  */
 class Pax extends ApiModel
 {
-    const AD = 'AD';
-    const CH = 'CH';
+    public const AD = 'AD';
+    public const CH = 'CH';
 
     /**
      * Pax constructor.
@@ -30,25 +30,28 @@ class Pax extends ApiModel
      * @param string|null $surname Surname
      * @param string|null $roomId Room ID
      */
-    public function __construct($type=self::AD, $age=30, $name=null, $surname=null, $roomId=null)
+    public function __construct(string $type = self::AD, int $age = 30, ?string $name = null, ?string $surname = null, ?string $roomId = null)
     {
-        $this->validFields =
-            ["roomId" => "integer",
-             "type" => "string",
-             "age" => "integer",
-             "name" => "string",
-             "surname" => "string"];
+        $this->validFields = [
+            'roomId' => 'integer',
+            'type' => 'string',
+            'age' => 'integer',
+            'name' => 'string',
+            'surname' => 'string',
+        ];
 
         $this->age = $age;
         $this->type = $type;
-        if ($roomId !== null)
+        if ($roomId !== null) {
             $this->roomId = $roomId;
+        }
 
-        if ($name !== null)
+        if ($name !== null) {
             $this->name = $name;
+        }
 
-        if ($surname !== null)
+        if ($surname !== null) {
             $this->surname = $surname;
-
+        }
     }
 }

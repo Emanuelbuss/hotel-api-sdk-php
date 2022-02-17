@@ -8,14 +8,20 @@
 
 namespace hotelbeds\hotel_api_sdk\model;
 
+/**
+ * @property string $code
+ * @property int $zone
+ */
 class Destination extends ApiModel
 {
-    public function __construct($code=null)
+    public function __construct($code = null)
     {
         $this->validFields = [
-            "code" => "string",
-            "zone" => "integer" ];
-        if ($code !== null)
+            'code' => 'string',
+            'zone' => 'integer',
+        ];
+        if ($code !== null) {
             $this->code = $code;
+        }
     }
 }
