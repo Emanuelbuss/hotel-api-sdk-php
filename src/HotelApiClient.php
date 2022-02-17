@@ -166,7 +166,10 @@ class HotelApiClient
             throw new HotelSDKException("$sdkClassRQ or $sdkClassRS not implemented in SDK");
         }
         if ($sdkClassRQ == BookingConfirmRQ::class) {
-            $req = new $sdkClassRQ($this->apiUri, $this->apiPaymentUri, $args[0]);
+            if (empty($args[0]) || !$args[0] instanceof Booking) {
+                throw new \RuntimeException('Bad parameter 2 for BookingConfirmRQ');
+            }
+            $req = new BookingConfirmRQ($this->apiUri, $this->apiPaymentUri, $args[0]);
         } elseif ($args !== null && count($args) > 0) {
             $req = new $sdkClassRQ($this->apiUri, $args[0]);
         } else {
