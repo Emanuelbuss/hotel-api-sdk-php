@@ -29,14 +29,14 @@ class Pax extends ApiModel
      * @param int $age Age of passenger
      * @param string|null $name Name of passenger
      * @param string|null $surname Surname
-     * @param string|null $roomId Room ID
+     * @param int|null $roomId Room ID
      */
     public function __construct(
         string $type = self::AD,
         int $age = 30,
         ?string $name = null,
         ?string $surname = null,
-        ?string $roomId = null
+        ?int $roomId = null
     ) {
         $this->validFields = [
             'roomId' => 'integer',
