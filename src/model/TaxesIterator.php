@@ -11,36 +11,39 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class TaxesIterator
  * @package hotelbeds\hotel_api_sdk\model
+ * @template-implements \Iterator<Tax>
  */
 class TaxesIterator implements \Iterator
 {
-    private $taxes, $position = 0;
+    private int $position = 0;
+    private array $taxes;
+
     public function __construct(array $taxes)
     {
         $this->taxes = $taxes;
     }
 
-    public function current()
+    public function current(): Tax
     {
         return new Tax($this->taxes[$this->position]);
     }
 
-    public function next()
+    public function next(): void
     {
         ++$this->position;
     }
 
-    public function key()
+    public function key(): int
     {
         return $this->position;
     }
 
-    public function valid()
+    public function valid(): bool
     {
-        return ( $this->position < count($this->taxes) );
+        return $this->position < count($this->taxes);
     }
 
-    public function rewind()
+    public function rewind(): void
     {
         $this->position = 0;
     }

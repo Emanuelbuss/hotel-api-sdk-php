@@ -11,18 +11,19 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class PromotionsIterator
  * @package hotelbeds\hotel_api_sdk\model
+ * @template-implements \Iterator<Promotion>
  */
 class PromotionsIterator implements \Iterator
 {
     /**
      * @var array Contains all promotions of iterate
      */
-    private $promotions;
+    private array $promotions;
 
     /**
      * @var int actual position of iterator
      */
-    private $position = 0;
+    private int $position = 0;
 
     /**
      * PromotionsIterator constructor.
@@ -36,7 +37,7 @@ class PromotionsIterator implements \Iterator
     /**
      * @return Promotion Return actual Promotion object
      */
-    public function current()
+    public function current(): Promotion
     {
         return new Promotion($this->promotions[$this->position]);
     }
@@ -44,7 +45,7 @@ class PromotionsIterator implements \Iterator
     /**
      * Next promotion in promotions list
      */
-    public function next()
+    public function next(): void
     {
         ++$this->position;
     }
@@ -53,24 +54,24 @@ class PromotionsIterator implements \Iterator
      * Return a promotion code
      * @return string return a promotion code
      */
-    public function key()
+    public function key(): string
     {
-        return $this->promotions[$this->position]["code"];
+        return $this->promotions[$this->position]['code'];
     }
 
     /**
      * Test if at the end?
      * @return bool
      */
-    public function valid()
+    public function valid(): bool
     {
-        return ( $this->position < count($this->promotions) );
+        return $this->position < count($this->promotions);
     }
 
     /**
      * Reset promotions cursor.
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->position = 0;
     }

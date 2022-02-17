@@ -8,36 +8,40 @@
 
 namespace hotelbeds\hotel_api_sdk\model;
 
-
+/**
+ * @template-implements \Iterator<Booking>
+ */
 class BookingIterator implements \Iterator
 {
-    private $bookings, $position = 0;
+    private array $bookings;
+    private int $position = 0;
+
     public function __construct(array $bookings)
     {
         $this->bookings = $bookings;
     }
 
-    public function current()
+    public function current(): Booking
     {
         return new Booking($this->bookings[$this->position]);
     }
 
-    public function next()
+    public function next(): void
     {
         ++$this->position;
     }
 
-    public function key()
+    public function key(): string
     {
-        return $this->bookings[$this->position]["reference"];
+        return $this->bookings[$this->position]['reference'];
     }
 
-    public function valid()
+    public function valid(): bool
     {
-        return ( $this->position < count($this->bookings) );
+        return $this->position < count($this->bookings);
     }
 
-    public function rewind()
+    public function rewind(): void
     {
         $this->position = 0;
     }
