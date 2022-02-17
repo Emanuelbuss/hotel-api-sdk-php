@@ -159,7 +159,7 @@ class HotelApiClient
     {
         /** @var class-string<ApiRequest> $sdkClassRQ */
         $sdkClassRQ = "hotelbeds\\hotel_api_sdk\\messages\\" . $sdkMethod . 'RQ';
-        /** @var class-string<ApiResponse> $sdkClassRQ */
+        /** @var class-string<ApiResponse> $sdkClassRS */
         $sdkClassRS = "hotelbeds\\hotel_api_sdk\\messages\\" . $sdkMethod . 'RS';
 
         if (!class_exists($sdkClassRQ) && !class_exists($sdkClassRS)) {
