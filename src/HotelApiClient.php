@@ -1,4 +1,5 @@
 <?php
+
 /**
  * #%L
  * hotel-api-sdk
@@ -23,28 +24,27 @@
 
 namespace hotelbeds\hotel_api_sdk;
 
-use hotelbeds\hotel_api_sdk\messages\StatusRS;
-
-use hotelbeds\hotel_api_sdk\messages\AvailabilityRS;
 use hotelbeds\hotel_api_sdk\helpers\Availability;
-
-use hotelbeds\hotel_api_sdk\messages\CheckRateRS;
-use hotelbeds\hotel_api_sdk\helpers\CheckRate;
-
-use hotelbeds\hotel_api_sdk\messages\BookingConfirmRS;
 use hotelbeds\hotel_api_sdk\helpers\Booking;
-
-use hotelbeds\hotel_api_sdk\messages\BookingListRS;
 use hotelbeds\hotel_api_sdk\helpers\BookingList;
-
-use hotelbeds\hotel_api_sdk\model\AuditData;
-use hotelbeds\hotel_api_sdk\types\ApiVersion;
-use hotelbeds\hotel_api_sdk\types\ApiVersions;
-use hotelbeds\hotel_api_sdk\types\HotelSDKException;
+use hotelbeds\hotel_api_sdk\helpers\CheckRate;
 use hotelbeds\hotel_api_sdk\messages\ApiRequest;
+use hotelbeds\hotel_api_sdk\messages\ApiResponse;
+use hotelbeds\hotel_api_sdk\messages\AvailabilityRS;
+use hotelbeds\hotel_api_sdk\messages\BookingCancellationRS;
+use hotelbeds\hotel_api_sdk\messages\BookingConfirmRQ;
+use hotelbeds\hotel_api_sdk\messages\BookingConfirmRS;
+use hotelbeds\hotel_api_sdk\messages\BookingListRS;
+use hotelbeds\hotel_api_sdk\messages\CheckRateRS;
+use hotelbeds\hotel_api_sdk\messages\StatusRS;
+use hotelbeds\hotel_api_sdk\model\AuditData;
+use hotelbeds\hotel_api_sdk\types\ApiUri;
+use hotelbeds\hotel_api_sdk\types\ApiVersion;
+use hotelbeds\hotel_api_sdk\types\HotelSDKException;
+
+/** @noinspection PhpUndefinedClassInspection class_exists() */
 
 use Rolfsbuss\db\RAPI;
-
 use Laminas\Http\Client;
 use Laminas\Http\Request;
 use Laminas\Http\Response;
@@ -57,45 +57,45 @@ use Laminas\Uri\UriFactory;
  * @method AvailabilityRS Availability(Availability $availData) Do availability accommodation request
  * @method CheckRateRS CheckRate(CheckRate $rateData) Check different room rates for booking
  * @method BookingConfirmRS BookingConfirm(Booking $bookingData) Method allows confirmation of the rate keys selected.  There is an option of confirming more than one rate key for the same hotel/room/board.
- * @method BookingCancellationRS BookingCancellation( $bookingId ) Method can cancel confirmed booking
- * @method BookingListRS BookingList( BookingList $bookData ) To get a list of bookings
+ * @method BookingCancellationRS BookingCancellation($bookingId) Method can cancel confirmed booking
+ * @method BookingListRS BookingList(BookingList $bookData) To get a list of bookings
  */
 class HotelApiClient
 {
     /**
-     * @var ApiUri Well formatted URI of service
+     * @var string ApiUri Well formatted URI of service
      */
-    private $apiUri;
-    
+    private string $apiUri;
+
     /**
-     * @var ApiUri Well formatted URI of service for payments
+     * @var string ApiUri Well formatted URI of service for payments
      */
-    private $apiPaymentUri;
+    private string $apiPaymentUri;
 
     /**
      * @var string Stores locally client api key
      */
-    private $apiKey;
+    private string $apiKey;
 
     /**
      * @var string Stores locally client shared secret
      */
-    private $sharedSecret;
+    private string $sharedSecret;
 
     /**
      * @var Client HTTPClient object
      */
-    private $httpClient;
+    private Client $httpClient;
 
     /**
-     * @var Request Last sent request
+     * @var ?Request Last sent request
      */
-    private $lastRequest;
+    private ?Request $lastRequest;
 
     /**
-     * @var Response Last sent request
+     * @var ?Response Last sent request
      */
-    private $lastResponse;
+    private ?Response $lastResponse;
 
     /**
      * HotelApiClient Constructor they initialize SDK Client.
@@ -104,55 +104,55 @@ class HotelApiClient
      * @param string $sharedSecret Shared secret
      * @param ApiVersion $version Version of HotelAPI Interface
      * @param int $timeout HTTP Client timeout
-     * @param string $adapter Customize adapter for http request
-     * @param string $secureUrl Customize Base URL of hotel-api secure service.
+     * @param string|null $adapter Customize adapter for http request
+     * @param string|null $secureUrl Customize Base URL of hotel-api secure service.
      */
-    public function __construct($url, $apiKey, $sharedSecret, ApiVersion $version, $timeout=30, $adapter=null, $secureUrl=null)
+    public function __construct(string $url, string $apiKey, string $sharedSecret, ApiVersion $version, int $timeout = 30, string $adapter = null, string $secureUrl = null)
     {
         $this->lastRequest = null;
         $this->apiKey = trim($apiKey);
         $this->sharedSecret = trim($sharedSecret);
         $this->httpClient = new Client();
-        if($adapter!=null) {
-            $this->httpClient->setOptions([
-            		"adapter" => $adapter,
-            		"timeout" => $timeout
-            ]);
-        }else{
-            $this->httpClient->setOptions([
-            		"timeout" => $timeout
-            ]);
+        if ($adapter !== null) {
+            $options = [
+                'adapter' => $adapter,
+                'timeout' => $timeout,
+            ];
+        } else {
+            $options = [
+                'timeout' => $timeout,
+            ];
         }
-        UriFactory::registerScheme("https","hotelbeds\\hotel_api_sdk\\types\\ApiUri");
+        $this->httpClient->setOptions($options);
+        UriFactory::registerScheme('https', ApiUri::class);
         $this->apiUri = UriFactory::factory($url);
         $this->apiUri->prepare($version);
-        $this->apiPaymentUri = UriFactory::factory($secureUrl?$secureUrl:$url);
+        $this->apiPaymentUri = UriFactory::factory($secureUrl ?: $url);
         $this->apiPaymentUri->prepare($version);
     }
 
     /**
-     * @param $sdkMethod string Method request name.
-     * @param $args array only specify a ApiHelper class type for encapsulate request arguments
+     * @param string $sdkMethod Method request name.
+     * @param array $args only specify a ApiHelper class type for encapsulate request arguments
      * @return ApiResponse Class of response. Each call type returns response class: For example AvailabilityRQ returns AvailabilityRS
      * @throws HotelSDKException Specific exception of call
      */
-
-    public function __call($sdkMethod, array $args=null)
+    public function __call(string $sdkMethod, array $args = null): ApiResponse
     {
-        $sdkClassRQ = "hotelbeds\\hotel_api_sdk\\messages\\".$sdkMethod."RQ";
-        $sdkClassRS = "hotelbeds\\hotel_api_sdk\\messages\\".$sdkMethod."RS";
+        /** @var class-string<ApiRequest> $sdkClassRQ */
+        $sdkClassRQ = "hotelbeds\\hotel_api_sdk\\messages\\" . $sdkMethod . 'RQ';
+        /** @var class-string<ApiResponse> $sdkClassRQ */
+        $sdkClassRS = "hotelbeds\\hotel_api_sdk\\messages\\" . $sdkMethod . 'RS';
 
-        if (!class_exists($sdkClassRQ) && !class_exists($sdkClassRS)){
+        if (!class_exists($sdkClassRQ) && !class_exists($sdkClassRS)) {
             throw new HotelSDKException("$sdkClassRQ or $sdkClassRS not implemented in SDK");
         }
-        if($sdkClassRQ == "hotelbeds\\hotel_api_sdk\\messages\\BookingConfirmRQ"){
-        	$req = new $sdkClassRQ($this->apiUri, $this->apiPaymentUri, $args[0]);
-        }else{
-	        if ($args !== null && count($args) > 0){
-	            $req = new $sdkClassRQ($this->apiUri, $args[0]);
-	        } else {
-	        	$req = new $sdkClassRQ($this->apiUri);
-	        }
+        if ($sdkClassRQ == BookingConfirmRQ::class) {
+            $req = new $sdkClassRQ($this->apiUri, $this->apiPaymentUri, $args[0]);
+        } elseif ($args !== null && count($args) > 0) {
+            $req = new $sdkClassRQ($this->apiUri, $args[0]);
+        } else {
+            $req = new $sdkClassRQ($this->apiUri);
         }
         return new $sdkClassRS($this->callApi($req));
     }
@@ -163,44 +163,42 @@ class HotelApiClient
      * @param ApiRequest $request API Abstract request helper for construct request
      * @return array Response data into PHP Array structure
      * @throws HotelSDKException Calling exception, can capture remote server auditdata if exists.
+     * @throws \JsonException
      */
-    private function callApi(ApiRequest $request)
+    private function callApi(ApiRequest $request): array
     {
-
-        if (class_exists('RAPI')) {
+        /** @noinspection PhpUndefinedClassInspection class_exists() */
+        if (class_exists(RAPI::class)) {
             RAPI::waitForHotelbedsRateLimit();
         }
 
         try {
-            $signature = hash("sha256", $this->apiKey.$this->sharedSecret.time());
+            $signature = hash('sha256', $this->apiKey . $this->sharedSecret . time());
             $this->lastRequest = $request->prepare($this->apiKey, $signature);
             $response = $this->httpClient->send($this->lastRequest);
             $this->lastResponse = $response;
         } catch (\Exception $e) {
-            throw new HotelSDKException("Error accessing API: " . $e->getMessage());
+            throw new HotelSDKException('Error accessing API: ' . $e->getMessage());
         }
 
         if ($response->getStatusCode() !== 200) {
-           $auditData = null;$message=''; $errorResponse = null;
-           if ($response->getBody() !== null) {
-               try {
-                   $errorResponse = \Laminas\Json\Json::decode($response->getBody(), \Laminas\Json\Json::TYPE_ARRAY);
-                   $auditData = new AuditData($errorResponse["auditData"]);
-                   $message =$errorResponse["error"]["code"].' '.$errorResponse["error"]["message"];
-               } catch (\Exception $e) {
-                   throw new HotelSDKException($response->getReasonPhrase().': '.$response->getBody());
-               }
-           }
-            throw new HotelSDKException($response->getReasonPhrase().': '.$message, $auditData);
+            try {
+                $errorResponse = json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR);
+                $auditData = new AuditData($errorResponse['auditData']);
+                $message = $errorResponse['error']['code'] . ' ' . $errorResponse['error']['message'];
+            } catch (\Exception $e) {
+                throw new HotelSDKException($response->getReasonPhrase() . ': ' . $response->getBody());
+            }
+            throw new HotelSDKException($response->getReasonPhrase() . ': ' . $message, $auditData);
         }
 
-        return \Laminas\Json\Json::decode(mb_convert_encoding($response->getBody(),'UTF-8'), \Laminas\Json\Json::TYPE_ARRAY);
+        return json_decode(mb_convert_encoding($response->getBody(), 'UTF-8'), true, 512, JSON_THROW_ON_ERROR);
     }
 
     /**
      * @return Request getLastRequest Returns entire raw request
      */
-    public function getLastRequest()
+    public function getLastRequest(): ?Request
     {
         return $this->lastRequest;
     }
@@ -208,10 +206,9 @@ class HotelApiClient
     /**
      * @return Response getLastResponse Returns entire raw response
      */
-    public function getLastResponse()
+    public function getLastResponse(): ?Response
     {
         return $this->lastResponse;
     }
-
 
 }

@@ -5,10 +5,12 @@
     "require": {
         "php": ">=7.4",
         "ext-json": "*",
+        "ext-mbstring": "*",
         "laminas/laminas-config": ">=3.3.0",
         "laminas/laminas-dependency-plugin": "^2.1",
         "laminas/laminas-http": ">=2.11.2",
         "laminas/laminas-json": ">=3.1.2",
+        "laminas/laminas-uri": ">=2.9.1",
         "nicmart/string-template": ">=0.1.2"
     },
     "require-dev": {
@@ -34,6 +36,11 @@
     "autoload-dev": {
         "psr-4": {
             "hotelbeds\\hotel_api_sdk\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "laminas/laminas-dependency-plugin": true
         }
     }
 }
