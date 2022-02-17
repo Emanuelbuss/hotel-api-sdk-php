@@ -37,7 +37,8 @@ class Pax extends ApiModel
         ?string $name = null,
         ?string $surname = null,
         ?int $roomId = null
-    ) {
+    )
+    {
         $this->validFields = [
             'roomId' => 'integer',
             'type' => 'string',
@@ -59,5 +60,20 @@ class Pax extends ApiModel
         if ($surname !== null) {
             $this->surname = $surname;
         }
+    }
+
+    /**
+     * @param array<string,integer|string> $data
+     * @return Pax
+     */
+    public static function load(array $data): Pax
+    {
+        return new self(
+            $data['type'] ?? null,
+            $data['age'] ?? null,
+            $data['name'] ?? null,
+            $data['surname'] ?? null,
+            $data['roomId'] ?? null,
+        );
     }
 }

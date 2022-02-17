@@ -41,6 +41,11 @@ class Room extends ApiModel implements \IteratorAggregate
         }
     }
 
+    public function paxIterator(): PaxIterator
+    {
+        return new PaxIterator($this->paxes ?? []);
+    }
+
     public function rateIterator(): RateIterator
     {
         return new RateIterator($this->rates ?? []);
