@@ -111,6 +111,12 @@ abstract class DataContainer implements \JsonSerializable
 
     public function jsonSerialize()
     {
-        return $this->fields;
+        $data = $this->fields;
+        foreach($data as $index => $value) {
+            if ($value instanceof \DateTime) {
+                $data[$index] = $value->format('Y-m-d');
+            }
+        }
+        return $data;
     }
 }
