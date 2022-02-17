@@ -17,18 +17,24 @@ use StringTemplate;
  */
 class ApiUri extends Http
 {
-    const BASE_PATH='/hotel-api';
-    const API_URI_FORMAT = '{basepath}/{version}';
+    public const BASE_PATH = '/hotel-api';
+    public const API_URI_FORMAT = '{basepath}/{version}';
 
     /**
      * Prepare URL for the operation
      * @param ApiVersion $version Version of API used for client
      */
-    public function prepare(ApiVersion $version)
+    public function prepare(ApiVersion $version): void
     {
         $strSubs = new StringTemplate\Engine;
-        $this->setPath($strSubs->render(self::API_URI_FORMAT,
-            ["basepath"  => self::BASE_PATH,
-             "version"   => $version->getVersion()]));
+        $this->setPath(
+            $strSubs->render(
+                self::API_URI_FORMAT,
+                [
+                    "basepath" => self::BASE_PATH,
+                    "version" => $version->getVersion(),
+                ]
+            )
+        );
     }
 }

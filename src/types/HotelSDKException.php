@@ -17,9 +17,9 @@ use hotelbeds\hotel_api_sdk\model\AuditData;
 class HotelSDKException extends \Exception
 {
     /**
-     * @var AuditData Contains an Audit Data Class with audit data of response if apply
+     * @var AuditData|null Contains an Audit Data Class with audit data of response if apply
      */
-    private $auditData;
+    private ?AuditData $auditData;
 
     /**
      * HotelSDKException constructor.
@@ -36,7 +36,7 @@ class HotelSDKException extends \Exception
      * Return an audit data if apply
      * @return AuditData|null
      */
-    public function getAuditData()
+    public function getAuditData(): ?AuditData
     {
         return $this->auditData;
     }

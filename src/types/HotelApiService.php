@@ -29,23 +29,19 @@ namespace hotelbeds\hotel_api_sdk\types;
 
 final class HotelApiService
 {
-    const DEVELOPMENT = "http://localhost:8181";
-    const LIVE = "https://api.hotelbeds.com/hotel-api";
-    const TEST = "https://api.test.hotelbeds.com/hotel-api";
+    public const DEVELOPMENT = "http://localhost:8181";
+    public const LIVE = "https://api.hotelbeds.com/hotel-api";
+    public const TEST = "https://api.test.hotelbeds.com/hotel-api";
 
-    private $version;
+    private string $version;
 
-    public function __construct($version=self::TEST)
+    public function __construct(string $version = self::TEST)
     {
         $this->version = $version;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getVersion()
+    public function getVersion(): string
     {
         return $this->version;
     }
-
 }
