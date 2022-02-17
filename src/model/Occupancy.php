@@ -15,9 +15,10 @@ namespace hotelbeds\hotel_api_sdk\model;
  * @property integer $rooms Number of rooms
  * @property integer $adults
  * @property integer $children
- * @property array $paxes List of paxes
+ * @property array<array<string,integer|string>> $paxes List of paxes
+ * @template-implements \IteratorAggregate<int,Pax>
  */
-class Occupancy extends ApiModel
+class Occupancy extends ApiModel implements \IteratorAggregate
 {
     public function __construct()
     {
@@ -25,7 +26,18 @@ class Occupancy extends ApiModel
             'rooms' => 'integer',
             'adults' => 'integer',
             'children' => 'integer',
+            // array<array<string,integer|string>> paxes
             'paxes' => 'array',
         ];
+    }
+
+    public function getIterator(): PaxIterator
+    {
+        return new PaxIterator($this->paxes ?? []);
+    }
+
+    public function paxIterator(): PaxIterator
+    {
+        return new PaxIterator($this->paxes ?? []);
     }
 }
