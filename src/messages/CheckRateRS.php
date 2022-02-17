@@ -24,7 +24,7 @@ class CheckRateRS extends ApiResponse
     public function __construct(array $rsData)
     {
         parent::__construct($rsData);
-        if (array_key_exists("hotel", $rsData)) {
+        if (array_key_exists('hotel', $rsData)) {
             $this->hotel = new Hotel($this->__get('hotel'));
         }
     }

@@ -29,9 +29,9 @@ namespace hotelbeds\hotel_api_sdk\types;
 
 final class HotelApiService
 {
-    public const DEVELOPMENT = "http://localhost:8181";
-    public const LIVE = "https://api.hotelbeds.com/hotel-api";
-    public const TEST = "https://api.test.hotelbeds.com/hotel-api";
+    public const DEVELOPMENT = 'http://localhost:8181';
+    public const LIVE = 'https://api.hotelbeds.com/hotel-api';
+    public const TEST = 'https://api.test.hotelbeds.com/hotel-api';
 
     private string $version;
 

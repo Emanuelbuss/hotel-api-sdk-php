@@ -31,8 +31,8 @@ class ApiUri extends Http
             $strSubs->render(
                 self::API_URI_FORMAT,
                 [
-                    "basepath" => self::BASE_PATH,
-                    "version" => $version->getVersion(),
+                    'basepath' => self::BASE_PATH,
+                    'version' => $version->getVersion(),
                 ]
             )
         );

@@ -17,7 +17,7 @@ use hotelbeds\hotel_api_sdk\model\PaymentData;
  * @property Holder $holder Booking holder information element
  * @property array $rooms List of the rooms to be confirmed.
  * @property string $clientReference Your internal booking reference or comments
- * @property PaymentData $paymentData Payment information. This node must be used if paymentType = 'AT_HOTEL'
+ * @property ?PaymentData $paymentData Payment information. This node must be used if paymentType = 'AT_HOTEL'
  * @property string $language Response language
  * @property string $remark Client remark
  * @property integer $platform Platform

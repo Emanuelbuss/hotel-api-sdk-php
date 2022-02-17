@@ -41,7 +41,7 @@ abstract class ApiRequest implements ApiCallTypes
     {
         $this->request = new Request();
         $this->baseUri = new Http($baseUri);
-        $this->baseUri->setPath($baseUri->getPath() . "/" . $operation);
+        $this->baseUri->setPath($baseUri->getPath() . '/' . $operation);
     }
 
     /**
@@ -60,7 +60,7 @@ abstract class ApiRequest implements ApiCallTypes
     public function prepare(string $apiKey, string $signature): Request
     {
         if (empty($apiKey) || empty($signature)) {
-            throw new \InvalidArgumentException("HotelApiClient cannot be created without specifying an API key and signature");
+            throw new \InvalidArgumentException('HotelApiClient cannot be created without specifying an API key and signature');
         }
 
         $this->request->setUri($this->baseUri);
@@ -82,7 +82,7 @@ abstract class ApiRequest implements ApiCallTypes
                     break;
                 case Request::METHOD_POST:
                     $this->request->getHeaders()->addHeaders(['Content-Type' => 'application/json']);
-                    $this->request->setContent("" . $this->dataRQ);
+                    $this->request->setContent('' . $this->dataRQ);
             }
         }
 

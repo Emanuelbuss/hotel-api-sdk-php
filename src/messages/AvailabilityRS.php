@@ -41,7 +41,7 @@ class AvailabilityRS extends ApiResponse
     public function __construct(array $rsData)
     {
         parent::__construct($rsData);
-        if (array_key_exists("hotels", $rsData)) {
+        if (array_key_exists('hotels', $rsData)) {
             $this->hotels = new Hotels($this->__get('hotels'));
         }
     }

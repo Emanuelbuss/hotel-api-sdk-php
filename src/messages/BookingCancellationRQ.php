@@ -26,6 +26,6 @@ class BookingCancellationRQ extends ApiRequest
     {
         parent::__construct($baseUri, self::BOOKING);
         $this->request->setMethod(Request::METHOD_DELETE);
-        $this->baseUri->setPath($baseUri->getPath() . "/" . self::BOOKING . "/{$bookingId}");
+        $this->baseUri->setPath($baseUri->getPath() . '/' . self::BOOKING . "/{$bookingId}");
     }
 }

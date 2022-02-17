@@ -95,8 +95,8 @@ abstract class DataContainer implements \JsonSerializable
     public function toArray(): array
     {
         return array_map(static function ($item) {
-            if (is_object($item) && get_class($item) === "DateTime") {
-                return $item->format("Y-m-d");
+            if (is_object($item) && get_class($item) === \DateTime::class) {
+                return $item->format('Y-m-d');
             }
 
             if ($item instanceof DataContainer) {

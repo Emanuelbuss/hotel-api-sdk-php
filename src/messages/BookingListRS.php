@@ -26,7 +26,7 @@ class BookingListRS extends ApiResponse
     public function __construct(array $rsData)
     {
         parent::__construct($rsData);
-        if (array_key_exists("bookings", $rsData)) {
+        if (array_key_exists('bookings', $rsData)) {
             $this->bookings = new Bookings($this->__get('bookings'));
         }
     }
