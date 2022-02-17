@@ -12,7 +12,6 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class Booking
  * @package hotelbeds\hotel_api_sdk\model
- * @property
  */
 class Booking extends ApiModel
 {

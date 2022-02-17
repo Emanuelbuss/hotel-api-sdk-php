@@ -66,14 +66,14 @@ use Laminas\Uri\UriFactory;
 class HotelApiClient
 {
     /**
-     * @var string ApiUri Well formatted URI of service
+     * @var ApiUri Well formatted URI of service
      */
-    private string $apiUri;
+    private ApiUri $apiUri;
 
     /**
-     * @var string ApiUri Well formatted URI of service for payments
+     * @var ApiUri Well formatted URI of service for payments
      */
-    private string $apiPaymentUri;
+    private ApiUri $apiPaymentUri;
 
     /**
      * @var string Stores locally client api key
@@ -134,10 +134,17 @@ class HotelApiClient
             ];
         }
         $this->httpClient->setOptions($options);
+
         UriFactory::registerScheme('https', ApiUri::class);
-        $this->apiUri = UriFactory::factory($url);
+
+        /** @var ApiUri $uri */
+        $uri = UriFactory::factory($url);
+        $this->apiUri = $uri;
         $this->apiUri->prepare($version);
-        $this->apiPaymentUri = UriFactory::factory($secureUrl ?: $url);
+
+        /** @var ApiUri $uri */
+        $uri = UriFactory::factory($secureUrl ?: $url);
+        $this->apiPaymentUri = $uri;
         $this->apiPaymentUri->prepare($version);
     }
 
