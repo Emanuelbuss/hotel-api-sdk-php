@@ -34,10 +34,10 @@ namespace hotelbeds\hotel_api_sdk\model;
  * @property integer $adults Number of adults for the room
  * @property integer $children Number of children requested
  * @property string $childrenAges Children ages separated by commas
- * @property ?array $cancellationPolicies List of cancellation policies
- * @property array $taxes List of taxes
- * @property ?array $promotions List of promotions
- * @property ?array $dailyRates List of daily rates
+ * @property ?array<array<string,double|string>> $cancellationPolicies List of cancellation policies
+ * @property array<array<string,boolean|double|string>> $taxes List of taxes
+ * @property ?array<array<string,string>> $promotions List of promotions
+ * @property ?array<array<string,double|integer>> $dailyRates List of daily rates
  * @property array $rateBreakDown+
  * @property array $shiftRates
  * @property array $offers
@@ -45,6 +45,9 @@ namespace hotelbeds\hotel_api_sdk\model;
  */
 class Rate extends ApiModel
 {
+    /**
+     * @param ?array<string,mixed> $data TODO
+     */
     public function __construct(array $data = null)
     {
         // TODO: Falten camps per afegir: shifts
@@ -61,12 +64,16 @@ class Rate extends ApiModel
             'comissionPCT' => 'double',
             'rateCommentsId' => 'string',
             'rateComments' => 'string',
+            // TODO
             'voucherComments' => 'array',
             'paymentType' => 'string',
             'packaging' => 'boolean',
+            // TODO
             'rateBreakDown' => 'array',
             'boardCode' => 'string',
+            // TODO
             'offers' => 'array',
+            // TODO
             'shiftRates' => 'array',
             'rateup' => 'double',
             'boardName' => 'string',
@@ -77,9 +84,13 @@ class Rate extends ApiModel
             'adults' => 'integer',
             'children' => 'integer',
             'childrenAges' => 'string',
+            // array<array<string,double|string>> cancellationPolicies
             'cancellationPolicies' => 'array',
+            // array<array<string,boolean|double|string>> taxes
             'taxes' => 'array',
+            // array<array<string,string>> promotions
             'promotions' => 'array',
+            // array<array<string,double|integer>> dailyRates
             'dailyRates' => 'array',
         ];
 

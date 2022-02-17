@@ -25,7 +25,7 @@ class AuditData extends ApiModel
 {
     /**
      * AuditData constructor.
-     * @param array|null $data Data response
+     * @param ?array<double|integer|string> $data Data response
      */
     public function __construct(array $data = null)
     {

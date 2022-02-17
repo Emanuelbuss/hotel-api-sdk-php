@@ -22,17 +22,23 @@ use Traversable;
  * @property array $paxes
  * @property integer $id
  * @property string $supplierReference
+ * @template-implements \IteratorAggregate<string,Rate>
  */
 class Room extends ApiModel implements \IteratorAggregate
 {
+    /**
+     * @param ?array<string,integer|string|array<string,integer|string>|array<array<string,mixed>>> $data
+     */
     public function __construct(array $data = null)
     {
         $this->validFields = [
             'code' => 'integer',
+            // array<string,integer|string> paxes
             'paxes' => 'array',
             'id' => 'integer',
             'supplierReference' => 'string',
             'name' => 'string',
+            // array<array<string,mixed>> rates
             'rates' => 'array',
         ];
 

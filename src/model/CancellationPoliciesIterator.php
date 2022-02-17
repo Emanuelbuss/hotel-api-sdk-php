@@ -12,13 +12,17 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class CancellationPoliciesIterator
  * @package hotelbeds\hotel_api_sdk\model
- * @template-implements \Iterator<CancellationPolicy>
+ * @template-implements \Iterator<string,CancellationPolicy>
  */
 class CancellationPoliciesIterator implements \Iterator
 {
+    /** @var array<array<double|string>> */
     private array $cancelPolicies;
     private int $position = 0;
 
+    /**
+     * @param array<array<double|string>> $policies
+     */
     public function __construct(array $policies)
     {
         $this->cancelPolicies = $policies;

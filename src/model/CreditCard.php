@@ -18,6 +18,9 @@ namespace hotelbeds\hotel_api_sdk\model;
  */
 class CreditCard extends ApiModel
 {
+    /**
+     * @param ?array<string,string> $data
+     */
     public function __construct(array $data = null)
     {
         $this->validFields = [

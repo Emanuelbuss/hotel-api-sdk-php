@@ -16,5 +16,5 @@ interface ApiVersions
 
     public function __construct(string $version);
 
-    public function getVersion();
+    public function getVersion(): string;
 }

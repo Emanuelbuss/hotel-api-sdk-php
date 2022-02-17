@@ -10,13 +10,17 @@
 namespace hotelbeds\hotel_api_sdk\model;
 
 /**
- * @template-implements \Iterator<Rate>
+ * @template-implements \Iterator<string,Rate>
  */
 class RateIterator implements \Iterator
 {
+    /** @var array<array<string,mixed>> */
     private array $rates;
     private int $position = 0;
 
+    /**
+     * @param array<array<string,mixed>> $rates
+     */
     public function __construct(array $rates)
     {
         $this->rates = $rates;

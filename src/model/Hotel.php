@@ -27,28 +27,33 @@ use Traversable;
  * @property string $zoneName Name of the zone where the hotel is located
  * @property double $latitude Hotel geo latitude
  * @property double $longitude Hotel geo longitude
- * @property ?array $rooms List of rooms available for a particular hotel
+ * @property ?array<array<string,integer|string|array<string,integer|string>|array<array<string,mixed>>>> $rooms
+ *     List of rooms available for a particular hotel
  * @property string $currency Client currency
  * @property double $maxRate Maximum hotel room price
  * @property double $minRate Minimum hotel room price
  * @property string $giata Giata hotel code
  * @property double $totalSellingRate
  * @property double $totalNet
- * @property ?array $creditCards List of creditCards available for a particular hotel
+ * @property ?array<array<string,string>> $creditCards List of creditCards available for a particular hotel
  * @property \DateTime $checkIn check in date
  * @property \DateTime $checkOut check out date
  * @property integer $exclusiveDeal
- * @property array $keyword
- * @property array $reviews
+ * @property array<array<string,int>> $keyword
+ * @property array<array<string,double|int|string>> $reviews
  * @property double $pendingAmount
- * @property string $supplier
+ * @property array<string,string> $supplier
  * @property string $clientComments
  * @property double $cancellationAmount
- * @property array $upselling
+ * @property array<string,array<array<string,mixed>>> $upselling
  * @property boolean $isPaymentDataRequired
+ * @template-implements \IteratorAggregate<int,Room>
  */
 class Hotel extends ApiModel implements \IteratorAggregate
 {
+    /**
+     * @param ?array<\DateTime|integer|string|double|bool|array<string,string>|array<array<string,double|integer|string|array<string,integer|string>|array<array<string,mixed>>>>> $data
+     */
     public function __construct(array $data = null)
     {
         $this->validFields = [
@@ -66,21 +71,27 @@ class Hotel extends ApiModel implements \IteratorAggregate
             'zoneName' => 'string',
             'latitude' => 'double',
             'longitude' => 'double',
+            // array<array<string,integer|string|array<string,integer|string>|array<array<string,mixed>>>>
             'rooms' => 'array',
             'totalSellingRate' => 'double',
             'totalNet' => 'double',
             'currency' => 'string',
+            // array<string,string> key: name, vatNumber
+            'supplier' => 'array',
             'maxRate' => 'double',
             'minRate' => 'double',
             'giata' => 'string',
+            // array<array<string,int>> key: code, rating
             'keyword' => 'array',
+            // array<array<string,double|int|string>> key: rate, reviewCount, type
             'reviews' => 'array',
             'pendingAmount' => 'double',
-            'supplier' => 'string',
             'clientComments' => 'string',
             'cancellationAmount' => 'double',
+            // array<string,array<array<string,mixed>>>
             'upselling' => 'array',
             'isPaymentDataRequired' => 'boolean',
+            // array<array<string,string>> creditCards
             'creditCards' => 'array',
         ];
 

@@ -17,7 +17,7 @@ namespace hotelbeds\hotel_api_sdk\model;
  */
 class Holder extends ApiModel
 {
-    public function __construct($name = null, $surname = null)
+    public function __construct(?string $name = null, ?string $surname = null)
     {
         $this->validFields = [
             'name' => 'string',

@@ -19,6 +19,9 @@ namespace hotelbeds\hotel_api_sdk\model;
  */
 class Promotion extends ApiModel
 {
+    /**
+     * @param ?array<string,string> $data
+     */
     public function __construct(array $data = null)
     {
         $this->validFields = [

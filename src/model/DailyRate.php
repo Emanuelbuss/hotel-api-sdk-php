@@ -18,6 +18,9 @@ namespace hotelbeds\hotel_api_sdk\model;
  */
 class DailyRate extends ApiModel
 {
+    /**
+     * @param ?array<string,double|integer> $data
+     */
     public function __construct(array $data = null)
     {
         $this->validFields = [

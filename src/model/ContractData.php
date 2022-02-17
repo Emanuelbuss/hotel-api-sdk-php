@@ -14,7 +14,7 @@ namespace hotelbeds\hotel_api_sdk\model;
  */
 class ContractData extends ApiModel
 {
-    public function __construct($email = null, $phoneNumber = null)
+    public function __construct(string $email = null, string $phoneNumber = null)
     {
         $this->validFields = [
             'email' => 'string',

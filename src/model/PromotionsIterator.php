@@ -12,12 +12,12 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class PromotionsIterator
  * @package hotelbeds\hotel_api_sdk\model
- * @template-implements \Iterator<Promotion>
+ * @template-implements \Iterator<string,Promotion>
  */
 class PromotionsIterator implements \Iterator
 {
     /**
-     * @var array Contains all promotions of iterate
+     * @var array<array<string,string>> Contains all promotions of iterate
      */
     private array $promotions;
 
@@ -28,7 +28,7 @@ class PromotionsIterator implements \Iterator
 
     /**
      * PromotionsIterator constructor.
-     * @param array $promotions Promotions list
+     * @param array<array<string,string>> $promotions Promotions list
      */
     public function __construct(array $promotions)
     {

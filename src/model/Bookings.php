@@ -20,9 +20,13 @@ use Traversable;
  * @property integer $from
  * @property integer $to
  * @property integer $total
+ * @template-implements \IteratorAggregate<string,Booking>
  */
 class Bookings extends ApiModel implements \IteratorAggregate
 {
+    /**
+     * @param array<string,integer|array<array<string,double|string|array<string,string|bool>|array<\DateTime|integer|string|double|bool|array<string,string>|array<array<string,double|integer|string|array<string,integer|string>|array<array<string,mixed>>>>>>>> $data
+     */
     public function __construct(array $data = null)
     {
         $this->validFields = [

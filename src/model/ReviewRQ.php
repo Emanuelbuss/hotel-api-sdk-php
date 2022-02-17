@@ -18,6 +18,9 @@ namespace hotelbeds\hotel_api_sdk\model;
  */
 class ReviewRQ extends ApiModel
 {
+    /**
+     * @param ?array<integer|string> $data
+     */
     public function __construct(array $data = null)
     {
         $this->validFields = [

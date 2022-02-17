@@ -22,11 +22,11 @@ abstract class DataContainer implements \JsonSerializable
     protected array $validFields = [];
 
     /**
-     * @var array Array of data of all valid fields.
+     * @var array<string,mixed> Array of data of all valid fields.
      */
     protected array $fields = [];
 
-    public function __isset(string $field)
+    public function __isset(string $field): bool
     {
         return isset($this->fields[$field]);
     }
@@ -38,7 +38,7 @@ abstract class DataContainer implements \JsonSerializable
      * @throws FieldNotValid Rise if field is not defined into validFields.
      * @throws \Exception Rise of general exception same as defined field type is incorrect.
      */
-    public function __set(string $field, $value)
+    public function __set(string $field, $value): void
     {
         if (!empty($this->validFields) && !array_key_exists($field, $this->validFields)) {
             throw new FieldNotValid("$field not valid for this model");
@@ -83,7 +83,7 @@ abstract class DataContainer implements \JsonSerializable
     /**
      * Transform data fields into PHP-array structure
      *
-     * @return array Data fields array structure
+     * @return array<int|string,mixed> Data fields array structure
      */
     public function toArray(): array
     {

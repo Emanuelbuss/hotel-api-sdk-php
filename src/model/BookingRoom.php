@@ -17,7 +17,7 @@ namespace hotelbeds\hotel_api_sdk\model;
  */
 class BookingRoom extends ApiModel
 {
-    public function __construct($rateKey = null)
+    public function __construct(string $rateKey = null)
     {
         $this->validFields = [
             'rateKey' => 'string',

@@ -22,6 +22,9 @@ namespace hotelbeds\hotel_api_sdk\model;
  */
 class Tax extends ApiModel
 {
+    /**
+     * @param ?array<string,boolean|double|string> $data
+     */
     public function __construct(array $data = null)
     {
         $this->validFields = [

@@ -12,13 +12,17 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class DailyRatesIterator
  * @package hotelbeds\hotel_api_sdk\model
- * @template-implements \Iterator<DailyRate>
+ * @template-implements \Iterator<int,DailyRate>
  */
 class DailyRatesIterator implements \Iterator
 {
+    /** @var array<array<string,double|integer>> */
     private array $dailyrates;
     private int $position = 0;
 
+    /**
+     * @param array<array<string,double|integer>> $dailyrates
+     */
     public function __construct(array $dailyrates)
     {
         $this->dailyrates = $dailyrates;

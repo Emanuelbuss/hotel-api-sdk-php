@@ -15,7 +15,7 @@ namespace hotelbeds\hotel_api_sdk\model;
  */
 class Destination extends ApiModel
 {
-    public function __construct($code = null)
+    public function __construct(?string $code = null)
     {
         $this->validFields = [
             'code' => 'string',

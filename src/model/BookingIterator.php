@@ -10,13 +10,17 @@
 namespace hotelbeds\hotel_api_sdk\model;
 
 /**
- * @template-implements \Iterator<Booking>
+ * @template-implements \Iterator<string,Booking>
  */
 class BookingIterator implements \Iterator
 {
+    /** @var array<array<string,double|string|array<string,string|bool>|array<\DateTime|integer|string|double|bool|array<string,string>|array<array<string,double|integer|string|array<string,integer|string>|array<array<string,mixed>>>>>>>  */
     private array $bookings;
     private int $position = 0;
 
+    /**
+     * @param array<array<string,double|string|array<string,string|bool>|array<\DateTime|integer|string|double|bool|array<string,string>|array<array<string,double|integer|string|array<string,integer|string>|array<array<string,mixed>>>>>>> $bookings
+     */
     public function __construct(array $bookings)
     {
         $this->bookings = $bookings;

@@ -19,6 +19,9 @@ namespace hotelbeds\hotel_api_sdk\model;
  */
 class CancellationPolicy extends ApiModel
 {
+    /**
+     * @param ?array<double|string> $data
+     */
     public function __construct(array $data = null)
     {
         $this->validFields = [

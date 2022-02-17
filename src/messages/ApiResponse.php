@@ -16,13 +16,13 @@ namespace hotelbeds\hotel_api_sdk\messages;
 abstract class ApiResponse implements \JsonSerializable
 {
     /**
-     * @var array Contains data response
+     * @var array<string,mixed> Contains data response
      */
     private array $responseData;
 
     /**
      * ApiResponse constructor.
-     * @param array $rsData
+     * @param array<string,mixed> $rsData
      */
     public function __construct(array $rsData)
     {
@@ -44,7 +44,7 @@ abstract class ApiResponse implements \JsonSerializable
         return $this->responseData[$field];
     }
 
-    public function __isset(string $field)
+    public function __isset(string $field): bool
     {
         return isset($this->responseData[$field]);
     }
@@ -54,20 +54,23 @@ abstract class ApiResponse implements \JsonSerializable
      * @param string $field Field Name
      * @param mixed $value Field value
      */
-    public function __set(string $field, $value)
+    public function __set(string $field, $value): void
     {
         $this->responseData[$field] = $value;
     }
 
     /**
      * Return array data response.
-     * @return array response data in array format
+     * @return array<string,mixed> response data in array format
      */
     public function toArray(): array
     {
         return $this->responseData;
     }
 
+    /**
+     * @return array<string,mixed>
+     */
     public function jsonSerialize(): array
     {
         return $this->responseData;

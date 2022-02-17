@@ -10,13 +10,17 @@
 namespace hotelbeds\hotel_api_sdk\model;
 
 /**
- * @template-implements \Iterator<CreditCard>
+ * @template-implements \Iterator<string,CreditCard>
  */
 class CreditCardIterator implements \Iterator
 {
+    /** @var array<array<string,string>>  */
     private array $creditcards;
     private int $position = 0;
 
+    /**
+     * @param array<array<string,string>> $creditcards
+     */
     public function __construct(array $creditcards)
     {
         $this->creditcards = $creditcards;

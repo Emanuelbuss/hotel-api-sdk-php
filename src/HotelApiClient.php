@@ -150,7 +150,7 @@ class HotelApiClient
 
     /**
      * @param string $sdkMethod Method request name.
-     * @param array $args only specify a ApiHelper class type for encapsulate request arguments
+     * @param array<int|string,mixed> $args only specify a ApiHelper class type for encapsulate request arguments
      * @return ApiResponse Class of response.
      *     Each call type returns response class: For example AvailabilityRQ returns AvailabilityRS
      * @throws HotelSDKException Specific exception of call
@@ -179,7 +179,7 @@ class HotelApiClient
      * Generic API Call, this is a internal used method for sending all requests to webservice and parse
      * JSON response and transforms to PHP-Array object.
      * @param ApiRequest $request API Abstract request helper for construct request
-     * @return array Response data into PHP Array structure
+     * @return array<int|string,mixed> Response data into PHP Array structure
      * @throws HotelSDKException Calling exception, can capture remote server auditdata if exists.
      * @throws \JsonException
      */
