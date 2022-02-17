@@ -12,68 +12,79 @@ namespace hotelbeds\hotel_api_sdk\generic;
  * Class FieldNotValid. No valid field exception.
  * @package hotelbeds\hotel_api_sdk\generic
  */
-class FieldNotValid extends \Exception{}
+class FieldNotValid extends \Exception
+{
+}
 
 /**
  * Class DataContainer This is a generic data container. Used for messages and model data classes, can contains set of
  * keys. Can get and set magically with magic methods.
  * @package hotelbeds\hotel_api_sdk\generic
  */
-abstract class DataContainer
+abstract class DataContainer implements \JsonSerializable
 {
     /**
-     * @var array Array of valid fields of container and its types
+     * @var string[] Array of valid fields of container and its types
      */
-    protected $validFields = [];
+    protected array $validFields = [];
 
     /**
      * @var array Array of data of all valid fields.
      */
-    protected $fields = [];
+    protected array $fields = [];
+
+    public function __isset(string $field)
+    {
+        return isset($this->fields[$field]);
+    }
 
     /**
      * Setter magical method
-     * @param $field string Name of field
-     * @param $value mixed Value of field
+     * @param string $field Name of field
+     * @param mixed $value Value of field
      * @throws FieldNotValid Rise if field is not defined into validFields.
      * @throws \Exception Rise of general exception same as defined field type is incorrect.
      */
-    public function __set($field, $value)
+    public function __set(string $field, $value)
     {
-        if (!empty($this->validFields) && !array_key_exists($field, $this->validFields))
+        if (!empty($this->validFields) && !array_key_exists($field, $this->validFields)) {
             throw new FieldNotValid("$field not valid for this model");
+        }
 
         $type = $this->validFields[$field];
 
-        if (empty($type))
+        if (empty($type)) {
             $this->fields[$field] = $value;
+        }
 
         if (is_object($value)) {
-            if (get_class($value) !== $type)
-                throw new \Exception("Type error: Field $field needs $type class type: ".get_class($value));
+            if (get_class($value) !== $type) {
+                throw new \Exception("Type error: Field {$field} needs {$type} class type: " . get_class($value));
+            }
 
-            if (!is_a($value, $type))
-                throw new \Exception("Type error: Field $field needs $type class type!");
-        } else if (gettype($value) !== $type)
-            throw new \Exception("Type error: Field $field needs $type type!");
+            if (!is_a($value, $type)) {
+                throw new \Exception("Type error: Field {$field} needs {$type} class type!");
+            }
+        } elseif (gettype($value) !== $type) {
+            throw new \Exception("Type error: Field {$field} needs {$type} type!");
+        }
 
         $this->fields[$field] = $value;
     }
 
     /**
      * Getter magical method
-     * @param $field Field name
+     * @param string $field Field name
      * @return mixed Return a value of field
      * @throws FieldNotValid If field does exists
      */
-    public function __get($field)
+    public function __get(string $field)
     {
-        if (!empty($this->validFields) && !array_key_exists($field, $this->validFields))
-            throw new FieldNotValid("$field not valid for this model");
+        if (!empty($this->validFields) && !array_key_exists($field, $this->validFields)) {
+            throw new FieldNotValid("{$field} not valid for this model");
+        }
 
-        if (array_key_exists($field, $this->fields))
-            return $this->fields[$field];
-        return null;
+        return $this->fields[$field] ?? null;
     }
 
     /**
@@ -81,20 +92,19 @@ abstract class DataContainer
      *
      * @return array Data fields array structure
      */
-    public function toArray()
+    public function toArray(): array
     {
-        return array_map(function($item) {
+        return array_map(static function ($item) {
             if (is_object($item) && get_class($item) === "DateTime") {
                 return $item->format("Y-m-d");
-            } else {
-                if ($item instanceof DataContainer) {
-                    return $item->toArray();
-                }
             }
 
-            if (is_array($item))
-            {
-                return array_map(function($subItem) {
+            if ($item instanceof DataContainer) {
+                return $item->toArray();
+            }
+
+            if (is_array($item)) {
+                return array_map(static function ($subItem) {
                     if ($subItem instanceof DataContainer) {
                         return $subItem->toArray();
                     }
@@ -106,4 +116,8 @@ abstract class DataContainer
         }, $this->fields);
     }
 
+    public function jsonSerialize()
+    {
+        return $this->fields;
+    }
 }
