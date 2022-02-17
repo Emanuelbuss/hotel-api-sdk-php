@@ -7,12 +7,12 @@
  */
 
 namespace hotelbeds\hotel_api_sdk\helpers;
+
 use hotelbeds\hotel_api_sdk\model\Destination;
 use hotelbeds\hotel_api_sdk\model\Filter;
 use hotelbeds\hotel_api_sdk\model\Geolocation;
 use hotelbeds\hotel_api_sdk\model\Stay;
 use hotelbeds\hotel_api_sdk\model\Boards;
-use hotelbeds\hotel_api_sdk\model\ReviewRQ;
 
 /**
  * Class Availability
@@ -31,7 +31,6 @@ use hotelbeds\hotel_api_sdk\model\ReviewRQ;
  * @property array $accommodations Array of accommodation strings to filter by APARTMENT,APTHOTEL,CAMPING,HOMES,HOSTEL,HOTEL,PENDING,RESORT,RURAL
  * @property array $reviews Reviews we want to filter on
  */
-
 class Availability extends ApiHelper
 {
     /**
@@ -40,20 +39,20 @@ class Availability extends ApiHelper
     public function __construct()
     {
         $this->validFields = [
-                "stay" => "hotelbeds\\hotel_api_sdk\\model\\Stay",
-                "occupancies" => "array",
-                "geolocation" => "hotelbeds\\hotel_api_sdk\\model\\Geolocation",
-                "destination" => "hotelbeds\\hotel_api_sdk\\model\\Destination",
-                "keywords" => "array",
-                "hotels" => "array",
-                "boards" => "hotelbeds\\hotel_api_sdk\\model\\Boards",
-                "sourceMarket" => "string",
-                "dailyRate" => "boolean",
-                "language" => "string",
-                "accommodations"=> "array",
-                "filter" => "hotelbeds\\hotel_api_sdk\\model\\Filter",
-                "rooms" => "array",
-                "reviews" => "array"
-                ];
+            'stay' => Stay::class,
+            'occupancies' => 'array',
+            'geolocation' => Geolocation::class,
+            'destination' => Destination::class,
+            'keywords' => 'array',
+            'hotels' => 'array',
+            'boards' => Boards::class,
+            'sourceMarket' => 'string',
+            'dailyRate' => 'boolean',
+            'language' => 'string',
+            'accommodations' => 'array',
+            'filter' => Filter::class,
+            'rooms' => 'array',
+            'reviews' => 'array',
+        ];
     }
 }

@@ -28,17 +28,17 @@ class BookingList extends ApiHelper
     public function __construct()
     {
         $this->validFields = [
-            "start" => "DateTime",
-            "end" => "DateTime",
-            "from" => "integer",
-            "to" => "integer",
-            "includeCancelled" => "boolean",
-            "filterType" => "string",
-            "status" => "string",
-            "clientReference" => "string",
-            "country" => "string",
-            "destination" => "string",
-            "hotel" => "string"
+            'start' => 'DateTime',
+            'end' => 'DateTime',
+            'from' => 'integer',
+            'to' => 'integer',
+            'includeCancelled' => 'boolean',
+            'filterType' => 'string',
+            'status' => 'string',
+            'clientReference' => 'string',
+            'country' => 'string',
+            'destination' => 'string',
+            'hotel' => 'string',
         ];
     }
 }

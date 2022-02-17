@@ -13,13 +13,12 @@ namespace hotelbeds\hotel_api_sdk\helpers;
  * @package hotelbeds\hotel_api_sdk\helpers
  * @property array $rooms List of rooms,
  */
-
 class CheckRate extends ApiHelper
 {
     public function __construct()
     {
         $this->validFields = [
-            "rooms" => "array"
+            'rooms' => 'array',
         ];
     }
 }
