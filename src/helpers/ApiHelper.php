@@ -9,12 +9,16 @@
 namespace hotelbeds\hotel_api_sdk\helpers;
 
 use hotelbeds\hotel_api_sdk\generic\DataContainer;
-use Laminas\Json\Json;
 
 abstract class ApiHelper extends DataContainer
 {
+    /**
+     * @throws \JsonException
+     */
     public function __toString()
     {
-        return Json::encode($this->toArray());
+        /** @var string $json */
+        $json = json_encode($this, JSON_THROW_ON_ERROR) ?: '';
+        return $json;
     }
 }
