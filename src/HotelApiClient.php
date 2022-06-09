@@ -45,10 +45,10 @@ use hotelbeds\hotel_api_sdk\messages\ApiRequest;
 
 use Rolfsbuss\db\RAPI;
 
-use Zend\Http\Client;
-use Zend\Http\Request;
-use Zend\Http\Response;
-use Zend\Uri\UriFactory;
+use Laminas\Http\Client;
+use Laminas\Http\Request;
+use Laminas\Http\Response;
+use Laminas\Uri\UriFactory;
 
 /**
  * Class HotelApiClient. This is the main class of the SDK that makes client-api hotel. Mainly this class is used to make all calls to the hotel-api webservice using ApiHelper classes
@@ -166,9 +166,11 @@ class HotelApiClient
      */
     private function callApi(ApiRequest $request)
     {
-	    
-	     RAPI::waitForHotelbedsRateLimit();
-	    
+
+        if (class_exists('RAPI')) {
+            RAPI::waitForHotelbedsRateLimit();
+        }
+
         try {
             $signature = hash("sha256", $this->apiKey.$this->sharedSecret.time());
             $this->lastRequest = $request->prepare($this->apiKey, $signature);
@@ -182,7 +184,7 @@ class HotelApiClient
            $auditData = null;$message=''; $errorResponse = null;
            if ($response->getBody() !== null) {
                try {
-                   $errorResponse = \Zend\Json\Json::decode($response->getBody(), \Zend\Json\Json::TYPE_ARRAY);
+                   $errorResponse = \Laminas\Json\Json::decode($response->getBody(), \Laminas\Json\Json::TYPE_ARRAY);
                    $auditData = new AuditData($errorResponse["auditData"]);
                    $message =$errorResponse["error"]["code"].' '.$errorResponse["error"]["message"];
                } catch (\Exception $e) {
@@ -192,7 +194,7 @@ class HotelApiClient
             throw new HotelSDKException($response->getReasonPhrase().': '.$message, $auditData);
         }
 
-        return \Zend\Json\Json::decode(mb_convert_encoding($response->getBody(),'UTF-8'), \Zend\Json\Json::TYPE_ARRAY);
+        return \Laminas\Json\Json::decode(mb_convert_encoding($response->getBody(),'UTF-8'), \Laminas\Json\Json::TYPE_ARRAY);
     }
 
     /**

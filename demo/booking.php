@@ -20,7 +20,7 @@ use hotelbeds\hotel_api_sdk\types\ApiVersions;
 use hotelbeds\hotel_api_sdk\messages\AvailabilityRS;
 
 
-$reader = new Zend\Config\Reader\Ini();
+$reader = new Laminas\Config\Reader\Ini();
 $config = $reader->fromFile(__DIR__.'/HotelApiClient.ini');
 $cfgApi = $config["apiclient"];
 

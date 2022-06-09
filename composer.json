@@ -3,32 +3,36 @@
     "description": "Hotelbeds Hotel-API SDK for PHP",
     "type": "library",
     "require": {
-        "php": ">=5.5",
-        "zendframework/zend-http": "^2.5",
-        "zendframework/zend-json": "^2.5",
-        "nicmart/string-template": "v0.1.0",
-        "zendframework/zend-config": "2.5.1"
+        "php": ">=7.4",
+        "laminas/laminas-http": ">=2.11.2",
+        "laminas/laminas-json": ">=3.1.2",
+        "nicmart/string-template": ">=0.1.2",
+        "laminas/laminas-config": ">=3.3.0",
+        "laminas/laminas-dependency-plugin": "^2.1"
     },
     "require-dev": {
-        "php": ">=5.5",
-        "zendframework/zend-http": "^2.5",
-        "zendframework/zend-json": "^2.5",
-        "phpunit/php-code-coverage": "3.0.1",
-        "phpunit/phpunit": "3.7.*",
-        "phpdocumentor/phpdocumentor": "2.*"
+        "phpunit/phpunit": "^9.5.10"
     },
     "license": "LGPL-2.1",
     "authors": [
         {
             "name": "Tomeu Capo",
             "email": "t.capo@hotelbeds.com"
+        },
+        {
+            "name": "Thorbjörn 'Puggan' Sundragon",
+            "email": "thorbjorn.sundragon@rolfsbuss.se"
         }
     ],
     "minimum-stability": "stable",
     "autoload": {
-        "psr-4": { "hotelbeds\\hotel_api_sdk\\": "src/" }
+        "psr-4": {
+            "hotelbeds\\hotel_api_sdk\\": "src/"
+        }
     },
     "autoload-dev": {
-        "psr-4": { "hotelbeds\\hotel_api_sdk\\Tests\\": "tests/" }
+        "psr-4": {
+            "hotelbeds\\hotel_api_sdk\\Tests\\": "tests/"
+        }
     }
 }

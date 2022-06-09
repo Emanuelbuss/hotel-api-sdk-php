@@ -44,12 +44,12 @@ class HotelApiClientTest extends PHPUnit\Framework\TestCase
      */
     private $apiClient;
 
-    protected function setUp()
+    protected function setUp(): void
     {
-        $reader = new Zend\Config\Reader\Ini();
-        $commonConfig   = $reader->fromFile(__DIR__ . '\config\Common.ini');
+        $reader = new Laminas\Config\Reader\Ini();
+        $commonConfig   = $reader->fromFile(__DIR__ . '/config/Common.ini');
         $currentEnvironment = $commonConfig["environment"]? $commonConfig["environment"]: "DEFAULT";
-        $environmentConfig   = $reader->fromFile(__DIR__ . '\config\Environment.' . strtoupper($currentEnvironment) . '.ini');
+        $environmentConfig   = $reader->fromFile(__DIR__ . '/config/Environment.' . strtoupper($currentEnvironment) . '.ini');
         $cfgApi = $commonConfig["apiclient"];
         $cfgUrl = $environmentConfig["url"];
 
