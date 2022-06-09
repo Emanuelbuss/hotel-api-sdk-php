@@ -14,8 +14,8 @@ use hotelbeds\hotel_api_sdk\model\Bookings;
 /**
  * Class BookingListRS
  * @package hotelbeds\hotel_api_sdk\messages
- * @property AuditData auditData Relevant internal information
- * @property Bookings bookings List of bookings
+ * @property AuditData $auditData Relevant internal information
+ * @property Bookings $bookings List of bookings
  */
 
 class BookingListRS extends ApiResponse

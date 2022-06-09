@@ -8,11 +8,11 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class PaymentCard
  * @package hotelbeds\hotel_api_sdk\model
- * @property string cardType Credit card type
- * @property string cardNumber Credit card number
- * @property string cardHolderName Holder name
- * @property string expiryDate Credit card expiry date
- * @property string cardCVC Credit card CVC
+ * @property string $cardType Credit card type
+ * @property string $cardNumber Credit card number
+ * @property string $cardHolderName Holder name
+ * @property string $expiryDate Credit card expiry date
+ * @property string $cardCVC Credit card CVC
  */
 class PaymentCard extends ApiModel
 {

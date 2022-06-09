@@ -11,10 +11,10 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class Stay
  * @package hotelbeds\hotel_api_sdk\model
- * @property \DateTime checkIn Date of checkin booking
- * @property \DateTime checkOut Date of checkout booking
- * @property int shiftDays Amount of days after and before the check-in to check availability, keeping the same stay duration
- * @property bool allowOnlyShift Correct shiftDays internal functionality 
+ * @property \DateTime $checkIn Date of checkin booking
+ * @property \DateTime $checkOut Date of checkout booking
+ * @property int $shiftDays Amount of days after and before the check-in to check availability, keeping the same stay duration
+ * @property bool $allowOnlyShift Correct shiftDays internal functionality
  */
 
 class Stay extends ApiModel

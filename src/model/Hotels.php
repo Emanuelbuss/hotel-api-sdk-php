@@ -11,7 +11,7 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class Hotels
  * @package hotelbeds\hotel_api_sdk\model
- * @property integer total Total number of hotels
+ * @property integer $total Total number of hotels
  */
 class Hotels extends ApiModel
 {

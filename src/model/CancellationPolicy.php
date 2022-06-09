@@ -11,10 +11,10 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class CancellationPolicy
  * @package hotelbeds\hotel_api_sdk\model
- * @property double amount Amount that will be charged after date from
- * @property double hotelAmount Amount that will be charged after date from in hotel currency (for pay at hotel model)
- * @property string hotelCurrency Currency of amount
- * @property string from Date from where the amount will be charged
+ * @property double $amount Amount that will be charged after date from
+ * @property double $hotelAmount Amount that will be charged after date from in hotel currency (for pay at hotel model)
+ * @property string $hotelCurrency Currency of amount
+ * @property string $from Date from where the amount will be charged
  */
 
 class CancellationPolicy extends ApiModel

@@ -11,8 +11,8 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class BookingRoom
  * @package hotelbeds\hotel_api_sdk\model
- * @property string rateKey Rate key to be confirmed taken from the previous step.
- * @property array paxes List of paxes of the room.
+ * @property string $rateKey Rate key to be confirmed taken from the previous step.
+ * @property array $paxes List of paxes of the room.
  */
 class BookingRoom extends ApiModel
 {

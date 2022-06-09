@@ -11,36 +11,36 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class Hotel
  * @package hotelbeds\hotel_api_sdk\model
- * @property integer code Hotelbeds internal hotel code
- * @property string name Hotel name
- * @property string address Hotel address
- * @property string categoryCode Hotel category code
- * @property string categoryName Category name
- * @property string destinationCode Code of the destination where the hotel is located
- * @property string destinationName Name of the destination where the hotel is located
- * @property integer zoneCode Code of the zone where the hotel is located
- * @property string zoneName Name of the zone where the hotel is located
- * @property double latitude Hotel geo latitude
- * @property double longitude Hotel geo longitude
- * @property array rooms List of rooms available for a particular hotel
- * @property string currency Client currency
- * @property double maxRate Maximum hotel room price
- * @property double minRate Minimum hotel room price
- * @property string giata Giata hotel code
- * @property double totalSellingRate
- * @property double totalNet
- * @property array creditCards List of creditCards available for a particular hotel
- * @property \DateTime checkIn check in date
- * @property \DateTime checkOut check out date
- * @property integer exclusiveDeal
- * @property array keyword
- * @property array reviews
- * @property double pendingAmount
- * @property string supplier
- * @property string clientComments
- * @property double cancellationAmount
- * @property array upselling
- * @property boolean isPaymentDataRequired
+ * @property integer $code Hotelbeds internal hotel code
+ * @property string $name Hotel name
+ * @property string $address Hotel address
+ * @property string $categoryCode Hotel category code
+ * @property string $categoryName Category name
+ * @property string $destinationCode Code of the destination where the hotel is located
+ * @property string $destinationName Name of the destination where the hotel is located
+ * @property integer $zoneCode Code of the zone where the hotel is located
+ * @property string $zoneName Name of the zone where the hotel is located
+ * @property double $latitude Hotel geo latitude
+ * @property double $longitude Hotel geo longitude
+ * @property array $rooms List of rooms available for a particular hotel
+ * @property string $currency Client currency
+ * @property double $maxRate Maximum hotel room price
+ * @property double $minRate Minimum hotel room price
+ * @property string $giata Giata hotel code
+ * @property double $totalSellingRate
+ * @property double $totalNet
+ * @property array $creditCards List of creditCards available for a particular hotel
+ * @property \DateTime $checkIn check in date
+ * @property \DateTime $checkOut check out date
+ * @property integer $exclusiveDeal
+ * @property array $keyword
+ * @property array $reviews
+ * @property double $pendingAmount
+ * @property string $supplier
+ * @property string $clientComments
+ * @property double $cancellationAmount
+ * @property array $upselling
+ * @property boolean $isPaymentDataRequired
  */
 class Hotel extends ApiModel
 {

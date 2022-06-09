@@ -13,11 +13,11 @@ use hotelbeds\hotel_api_sdk\model\ContractData;
 /**
  * Class PaymentData
  * @package hotelbeds\hotel_api_sdk\model
- * @property PaymentCard paymentCard Payment Card info
- * @property ContractData contactData ContractData
- * @property array billingAddress
- * @property integer webPartner
- * @property array device
+ * @property PaymentCard $paymentCard Payment Card info
+ * @property ContractData $contactData ContractData
+ * @property array $billingAddress
+ * @property integer $webPartner
+ * @property array $device
  */
 class PaymentData extends ApiModel
 {

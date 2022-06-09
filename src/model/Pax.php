@@ -11,11 +11,11 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class Pax. Declare passenger data.
  * @package hotelbeds\hotel_api_sdk\model
- * @property integer roomId
- * @property string type Pax type. Two values are permitted for the attribute: AD for adult y CH
- * @property integer age
- * @property string name
- * @property string surname
+ * @property integer $roomId
+ * @property string $type Pax type. Two values are permitted for the attribute: AD for adult y CH
+ * @property integer $age
+ * @property string $name
+ * @property string $surname
  */
 class Pax extends ApiModel
 {

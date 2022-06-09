@@ -8,8 +8,8 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class ContractData
  * @package hotelbeds\hotel_api_sdk\model
- * @property string email Email
- * @property string phoneNumber Phone number
+ * @property string $email Email
+ * @property string $phoneNumber Phone number
  */
 class ContractData extends ApiModel
 {

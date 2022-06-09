@@ -29,8 +29,8 @@ use hotelbeds\hotel_api_sdk\model\Hotels;
 /**
  * Class AvailabilityRS
  * @package hotelbeds\hotel_api_sdk\messages
- * @property AuditData auditData Relevant internal information
- * @property Hotels hotels List of available hotels
+ * @property AuditData $auditData Relevant internal information
+ * @property Hotels $hotels List of available hotels
  */
 
 class AvailabilityRS extends ApiResponse

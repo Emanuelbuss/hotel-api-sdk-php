@@ -10,10 +10,10 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class Promotion
  * @package hotelbeds\hotel_api_sdk\model
- * @property string code Id of promotion
- * @property string name Description of promotion
- * @property string remark
- * @property string sequence
+ * @property string $code Id of promotion
+ * @property string $name Description of promotion
+ * @property string $remark
+ * @property string $sequence
 
  */
 class Promotion extends ApiModel

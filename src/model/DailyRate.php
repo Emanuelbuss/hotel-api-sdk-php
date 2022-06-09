@@ -11,9 +11,9 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class DailyRate
  * @package hotelbeds\hotel_api_sdk\model
- * @property integer offset Offset price
- * @property double dailyNet Net price
- * @property double dailySellingRate price
+ * @property integer $offset Offset price
+ * @property double $dailyNet Net price
+ * @property double $dailySellingRate price
  */
 
 class DailyRate extends ApiModel

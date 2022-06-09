@@ -11,9 +11,9 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class ReviewRQ
  * @package hotelbeds\hotel_api_sdk\model
- * @property int minRate minimum review wanted.
- * @property int maxRate maximum review wanted.
- * @property string type type of review i.e. TRIPADVISOR.
+ * @property int $minRate minimum review wanted.
+ * @property int $maxRate maximum review wanted.
+ * @property string $type type of review i.e. TRIPADVISOR.
  */
 class ReviewRQ extends ApiModel
 {

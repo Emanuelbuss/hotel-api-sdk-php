@@ -11,10 +11,10 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class Occupancy
  * @package hotelbeds\hotel_api_sdk\model
- * @property integer rooms Number of rooms
- * @property integer adults
- * @property integer children
- * @property array paxes List of paxes
+ * @property integer $rooms Number of rooms
+ * @property integer $adults
+ * @property integer $children
+ * @property array $paxes List of paxes
  */
 
 class Occupancy extends ApiModel

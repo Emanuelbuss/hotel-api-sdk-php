@@ -11,8 +11,8 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class Holder
  * @package hotelbeds\hotel_api_sdk\model
- * @property string name Booking holder name for all the rooms of the booking.
- * @property string surname Booking holder surname for all rooms of the booking.
+ * @property string $name Booking holder name for all the rooms of the booking.
+ * @property string $surname Booking holder surname for all rooms of the booking.
  */
 class Holder extends ApiModel
 {

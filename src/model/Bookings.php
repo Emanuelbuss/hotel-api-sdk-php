@@ -11,10 +11,10 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class Bookings
  * @package hotelbeds\hotel_api_sdk\model
- * @property array bookings
- * @property integer from
- * @property integer to
- * @property integer total
+ * @property array $bookings
+ * @property integer $from
+ * @property integer $to
+ * @property integer $total
  */
 class Bookings extends ApiModel
 {

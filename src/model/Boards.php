@@ -11,8 +11,8 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class Boards
  * @package hotelbeds\hotel_api_sdk\model
- * @property boolean included
- * @property array board
+ * @property boolean $included
+ * @property array $board
  *
  */
 class Boards extends ApiModel
